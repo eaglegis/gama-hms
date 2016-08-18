@@ -1,5 +1,7 @@
 # aspnetcoreangular2
 
+Running through http://blog.nbellocam.me/2016/03/14/asp-net-core-and-angular-2/ on MacOSX
+
 ````
 aspnetcoreangular2 % yo
 ? 'Allo Leigh! What would you like to do? Aspnet
