@@ -1,4 +1,4 @@
-/// <binding Clean='clean' />
+/// <binding Clean='clean' ProjectOpened='copy-deps' />
 "use strict";
 
 var gulp = require("gulp"),
@@ -7,16 +7,18 @@ var gulp = require("gulp"),
     cssmin = require("gulp-cssmin"),
     uglify = require("gulp-uglify");
 
-var webroot = "./wwwroot/";
-
 var paths = {
-    js: webroot + "js/**/*.js",
-    minJs: webroot + "js/**/*.min.js",
-    css: webroot + "css/**/*.css",
-    minCss: webroot + "css/**/*.min.css",
-    concatJsDest: webroot + "js/site.min.js",
-    concatCssDest: webroot + "css/site.min.css"
+    webroot: "./wwwroot/"
 };
+
+paths.js = paths.webroot + "js/**/*.js";
+paths.minJs = paths.webroot + "js/**/*.min.js";
+paths.css = paths.webroot + "css/**/*.css";
+paths.minCss = paths.webroot + "css/**/*.min.css";
+paths.concatJsDest = paths.webroot + "js/site.min.js";
+paths.concatCssDest = paths.webroot + "css/site.min.css";
+paths.npmSrc = "./node_modules/";
+paths.npmLibs = paths.webroot + "lib/npmlibs/";
 
 gulp.task("clean:js", function (cb) {
     rimraf(paths.concatJsDest, cb);
@@ -43,9 +45,6 @@ gulp.task("min:css", function () {
 });
 
 gulp.task("min", ["min:js", "min:css"]);
-
-paths.npmSrc = "./node_modules/";
-paths.npmLibs = paths.webroot + "lib/npmlibs/";
 
 gulp.task("copy-deps:systemjs", function () {
     return gulp.src(paths.npmSrc + '/systemjs/dist/**/*.*', { base: paths.npmSrc + '/systemjs/dist/' })
