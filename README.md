@@ -10,6 +10,8 @@
 
 ### Optional but recommended
 - Visual Studio Code (1.4.0 +)
+  - Extensions:
+    - C# for Visual Studio Code (powered by OmniSharp)
 
 Running through http://blog.nbellocam.me/2016/03/14/asp-net-core-and-angular-2/ on MacOSX
 
