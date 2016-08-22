@@ -6,7 +6,6 @@
 - typescript (1.8.10 +)
 - Microsoft .NET Core 1.0.0 - SDK Preview 2
 - .NET Command Line Tools (1.0.0-preview3-003223)
-- 
 
 ### Optional but recommended
 - Visual Studio Code (1.4.0 +)
