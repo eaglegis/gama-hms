@@ -1,8 +1,7 @@
 {
-  "compileOnSave": true,
+  "version": "1.8.9",
   "compilerOptions": {
     "noImplicitAny": false,
-    "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": true,
     "target": "es5",
