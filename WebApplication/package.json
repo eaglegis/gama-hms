@@ -10,7 +10,6 @@
     "rimraf": "2.5.2"
   },
   "dependencies": {
-    "@angular/core": "^2.0.0-rc.5",
     "angular2": "2.0.0-beta.17",
     "es6-promise": "^3.2.1",
     "es6-shim": "^0.35.1",
