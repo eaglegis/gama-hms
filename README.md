@@ -11,6 +11,11 @@
 - Visual Studio Code (1.4.0 +) for debugging
   - Extensions:
     - [C# for Visual Studio Code (powered by OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+  - If running using Visual Studio Code for editing, run the following to ensure .ts files are compiled to .js and .js.map files:
+````
+$ tsc --watch
+````
+
 
 - Atom (1.9.9 +) for editing
   - Extensions:
