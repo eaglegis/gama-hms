@@ -13,6 +13,14 @@ namespace WebApplication.Controllers
             return View();
         }
 
+        [HttpGet("Anything/{info}")]
+        public IActionResult Anything(string info)
+        {
+            ViewData["Message"] = "You said: " + info + ".";
+
+            return View();
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
