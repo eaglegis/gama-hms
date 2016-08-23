@@ -52,8 +52,8 @@ gulp.task("copy-deps:systemjs", function () {
 });
 
 gulp.task("copy-deps:angular2", function () {
-    return gulp.src(paths.npmSrc + '/angular2/bundles/**/*.js', { base: paths.npmSrc + '/angular2/bundles/' })
-         .pipe(gulp.dest(paths.npmLibs + '/angular2/'));
+    return gulp.src(paths.npmSrc + '/@angular/**/bundles/**/*.js', { base: paths.npmSrc + '/@angular/' })
+         .pipe(gulp.dest(paths.npmLibs + '/@angular/'));
 });
 
 gulp.task("copy-deps:es6-shim", function () {
@@ -61,9 +61,24 @@ gulp.task("copy-deps:es6-shim", function () {
          .pipe(gulp.dest(paths.npmLibs + '/es6-shim/'));
 });
 
-gulp.task("copy-deps:rxjs", function () {
+gulp.task("copy-deps:rxjs-bundles", function () {
     return gulp.src(paths.npmSrc + '/rxjs/bundles/*.*', { base: paths.npmSrc + '/rxjs/bundles/' })
          .pipe(gulp.dest(paths.npmLibs + '/rxjs/'));
 });
 
-gulp.task("copy-deps", ["copy-deps:rxjs", 'copy-deps:angular2', 'copy-deps:systemjs', 'copy-deps:es6-shim']);
+gulp.task("copy-deps:rxjs", function () {
+    return gulp.src(paths.npmSrc + '/rxjs/**/*.*', { base: paths.npmSrc + '/rxjs/' })
+         .pipe(gulp.dest(paths.npmLibs + '/rxjs/'));
+});
+
+gulp.task("copy-deps:zone.js", function () {
+    return gulp.src(paths.npmSrc + '/zone.js/dist/*.*', { base: paths.npmSrc + '/zone.js/dist/' })
+         .pipe(gulp.dest(paths.npmLibs + '/zone.js/'));
+});
+
+gulp.task("copy-deps:reflect-metadata", function () {
+    return gulp.src(paths.npmSrc + '/reflect-metadata/*.*', { base: paths.npmSrc + '/reflect-metadata/' })
+         .pipe(gulp.dest(paths.npmLibs + '/reflect-metadata/'));
+});
+
+gulp.task("copy-deps", ["copy-deps:rxjs", "copy-deps:rxjs-bundles", 'copy-deps:angular2', 'copy-deps:systemjs', 'copy-deps:es6-shim', 'copy-deps:zone.js', 'copy-deps:reflect-metadata']);

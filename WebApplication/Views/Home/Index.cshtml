@@ -15,15 +15,8 @@
 </section>
 
 @section Scripts {
+    <script src="system.config.js"></script>
     <script>
-        System.config({
-            packages: {
-                'app': { defaultExtension: 'js' },
-                'lib': { defaultExtension: 'js' },
-            },
-        });
-
-        System.import('app/boot')
-            .then(null, console.error.bind(console));
+      System.import('app').catch(function(err){ console.error(err); });
     </script>
 }

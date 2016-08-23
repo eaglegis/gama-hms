@@ -19,23 +19,23 @@
     <environment names="Development">
         <script src="~/lib/npmlibs/es6-shim/es6-shim.js"></script>
         <script src="~/lib/npmlibs/systemjs/system-polyfills.src.js"></script>
-        <script src="~/lib/npmlibs/angular2/angular2-polyfills.js"></script>
 
         <script src="~/lib/npmlibs/systemjs/system.src.js"></script>
+        <script src="~/lib/npmlibs/zone.js/zone.js"></script>
+        <script src="~/lib/npmlibs/reflect-metadata/Reflect.js"></script>
+
         <script src="~/lib/npmlibs/rxjs/Rx.js"></script>
-        <script src="~/lib/npmlibs/angular2/angular2.js"></script>
-        <script src="~/lib/npmlibs/angular2/router.js"></script>
     </environment>
 
     <environment names="Staging,Production">
         <script src="~/lib/npmlibs/es6-shim/es6-shim.min.js"></script>
         <script src="~/lib/npmlibs/systemjs/system-polyfills.js"></script>
-        <script src="~/lib/npmlibs/angular2/angular2-polyfills.min.js"></script>
+
+        <script src="~/lib/npmlibs/zone.js/zone.min.js"></script>
+        <script src="~/lib/npmlibs/reflect-metadata/Reflect.js"></script>
 
         <script src="~/lib/npmlibs/systemjs/system.src.js"></script>
         <script src="~/lib/npmlibs/rxjs/Rx.min.js"></script>
-        <script src="~/lib/npmlibs/angular2/angular2.min.js"></script>
-        <script src="~/lib/npmlibs/angular2/router.min.js"></script>
     </environment>
 </head>
 <body>
