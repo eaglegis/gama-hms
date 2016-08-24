@@ -5,7 +5,20 @@ var gulp = require("gulp"),
     rimraf = require("rimraf"),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
-    uglify = require("gulp-uglify");
+    uglify = require("gulp-uglify"),
+    browserSync = require('browser-sync').create();
+
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        proxy: "localhost:5000",
+        files: [
+          "Views/**/*.cshtml",
+          "wwwroot/app/*.js",
+          "wwwroot/css/style.css",
+          "wwwroot/js/*.js"
+        ]
+    });
+});
 
 var paths = {
     webroot: "./wwwroot/"
