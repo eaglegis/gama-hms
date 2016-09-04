@@ -25,15 +25,14 @@ namespace WebApplication.Controllers
       [HttpGet]
       public IEnumerable<Individual> Index()
       {
-
-          return new Individual[] {}; //{ "individual 1", "individual 2" };
+          return _context.Individuals.ToList();
       }
 
       // GET api/individual
-      [HttpGet]
-      public IEnumerable<string> Get(int ID)
+      [HttpGet("{id}")]
+      public Individual Get(int id)
       {
-          return new string[] { "individual 1", "individual 2" };
+        return _context.Individuals.Where<Individual>(I => I.Id == id).Single();
       }
 
     }
