@@ -16,6 +16,8 @@
 $ tsc --watch
 ````
 
+Awesome feature - entities frontend
+
 
 - Atom (1.9.9 +) for editing
   - Extensions:
