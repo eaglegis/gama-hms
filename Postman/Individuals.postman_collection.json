@@ -88,6 +88,20 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Get Individual NOT FOUND",
+			"request": {
+				"url": "http://localhost:5000/api/Individual/1000",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
