@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:5000/api/Individual",
+			"name": "Get all Individuals",
 			"request": {
 				"url": "http://localhost:5000/api/Individual",
 				"method": "GET",
@@ -22,7 +22,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/Individual/1",
+			"name": "Get Individual 1",
 			"request": {
 				"url": "http://localhost:5000/api/Individual/1",
 				"method": "GET",
@@ -36,7 +36,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/Individual/1",
+			"name": "PUT update name ",
 			"request": {
 				"url": "http://localhost:5000/api/Individual/1",
 				"method": "PUT",
@@ -49,14 +49,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\tid: 1,\n\tfirstName: \"Updated\",\n\tweightKgs: 100\n}"
+					"raw": "{\n\tid: 1,\n\tfirstName: \"Updated 2\",\n\tweightKgs: 90\n}"
 				},
-				"description": "PUT update name"
+				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/api/Individual/",
+			"name": "POST create individual",
 			"request": {
 				"url": "http://localhost:5000/api/Individual/",
 				"method": "POST",
@@ -71,7 +71,21 @@
 					"mode": "raw",
 					"raw": "{\n\tfirstName: \"Added from\",\n\tlastName: \"PostMan\",\n\tweightKgs: 90\n}"
 				},
-				"description": "POST create individual"
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Individiual",
+			"request": {
+				"url": "http://localhost:5000/api/Individual/4",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
 			},
 			"response": []
 		}
