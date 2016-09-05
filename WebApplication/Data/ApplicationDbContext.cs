@@ -10,6 +10,13 @@ namespace WebApplication.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public DbSet<Individual> Individuals { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Organisation> Organisations { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Position> Positions { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
