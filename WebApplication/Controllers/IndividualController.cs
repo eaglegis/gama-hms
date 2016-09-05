@@ -7,6 +7,7 @@ using WebApplication.Models;
 using WebApplication.Data;
 using Microsoft.Extensions.Logging;
 using WebApplication.Core;
+using System.Net.Http;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -39,11 +40,13 @@ namespace WebApplication.Controllers
         {
             _logger.LogDebug(LoggingEvents.GET_ITEM, "Individual Get ({0})", id);
 
-            if(_context.Individuals.Any(I => I.Id == id) == false){
+            Individual individual = _context.Individuals.SingleOrDefault(I => I.Id == id);
+            
+            if(individual == null){
                 _logger.LogError(LoggingEvents.GET_ITEM_NOTFOUND, "Individual not found ({0})", id);
             }
 
-            return _context.Individuals.First(I => I.Id == id);
+            return individual;
         }
 
 
@@ -62,7 +65,8 @@ namespace WebApplication.Controllers
         {
             _logger.LogDebug(LoggingEvents.UPDATE_ITEM, "Individual Update ({0})", id);
 
-            if(_context.Individuals.Any(I => I.Id == id) == false){
+
+            if(_context.Individuals.SingleOrDefault(I => I.Id == id) == null){
                 _logger.LogError(LoggingEvents.UPDATE_ITEM_NOTFOUND, "Individual not found ({0})", id);
             }
 
@@ -76,11 +80,12 @@ namespace WebApplication.Controllers
         {
             _logger.LogDebug(LoggingEvents.DELETE_ITEM, "Individual Delete ({0})", id);
 
-            if(_context.Individuals.Any(I => I.Id == id) == false){
+            Individual individual = _context.Individuals.SingleOrDefault(I => I.Id == id);
+
+            if(individual == null){
                 _logger.LogError(LoggingEvents.DELETE_ITEM_NOT_FOUND, "Individual not found ({0})", id);
             }
 
-            Individual individual = _context.Individuals.First(i => i.Id == id);
             _context.Individuals.Remove(individual);
             _context.SaveChanges();
         }
