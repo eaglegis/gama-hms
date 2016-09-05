@@ -16,10 +16,7 @@ namespace WebApplication.Controllers
         }
         public IActionResult Index()
         {
-            _logger.LogInformation(LoggingEvents.DEBUG_GENERAL, "Debug General comment ({0})", 99);
-            _logger.LogWarning(LoggingEvents.DEBUG_GENERAL, "Debug General comment ({0})", 99);
-            _logger.LogError(LoggingEvents.DEBUG_GENERAL, "Debug General comment ({0})", 99);
-            _logger.LogCritical(LoggingEvents.DEBUG_GENERAL, "Debug General comment ({0})", 99);
+            _logger.LogInformation(LoggingEvents.DEBUG_GENERAL, "Home Controller Index");
 
             return View();
         }
