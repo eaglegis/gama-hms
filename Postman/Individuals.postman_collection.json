@@ -1,0 +1,79 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Individuals",
+		"_postman_id": "783005a5-d993-b7d7-e2dc-eccc0261e6d0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/api/Individual",
+			"request": {
+				"url": "http://localhost:5000/api/Individual",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Individual/1",
+			"request": {
+				"url": "http://localhost:5000/api/Individual/1",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Individual/1",
+			"request": {
+				"url": "http://localhost:5000/api/Individual/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\tid: 1,\n\tfirstName: \"Updated\",\n\tweightKgs: 100\n}"
+				},
+				"description": "PUT update name"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Individual/",
+			"request": {
+				"url": "http://localhost:5000/api/Individual/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\tfirstName: \"Added from\",\n\tlastName: \"PostMan\",\n\tweightKgs: 90\n}"
+				},
+				"description": "POST create individual"
+			},
+			"response": []
+		}
+	]
+}
