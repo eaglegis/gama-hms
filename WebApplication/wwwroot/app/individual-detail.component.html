@@ -1,0 +1,18 @@
+<div *ngIf="individual">
+  <h2>{{individual.firstName}} {{individual.lastName}} details!</h2>
+  <div>
+    <label>id: </label>{{individual.id}}</div>
+    <label>First Name: </label>{{individual.firstName}}</div>
+    <label>Last Name: </label>{{individual.lastName}}</div>
+    <label>Weight (kgs): </label>{{individual.weightKgs}}</div>
+  <div>
+    <label>First Name: </label>
+    <input [(ngModel)]="individual.firstName" placeholder="first name" />
+    <label>Last Name: </label>
+    <input [(ngModel)]="individual.lastName" placeholder="last name" />
+    <label>Weight (gks): </label>
+    <input [(ngModel)]="individual.weightKgs" placeholder="weight" />
+   </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>

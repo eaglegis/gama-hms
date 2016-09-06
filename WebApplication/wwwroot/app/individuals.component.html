@@ -1,0 +1,24 @@
+<h2>Individuals</h2>
+<div>
+  <label>First Name:</label> <input #individualFirstName />
+  <label>First Name:</label> <input #individualLastName />
+  <label>Weight (kgs):</label> <input #individualWeightKgs />
+  <button (click)="add(individualFirstName.value, individualLastName.value, individualWeightKgs.value); 
+    individualFirstName.value='';
+    individualLastName.value='';
+    individualWeightKgs.value='';
+    ">
+    Add
+  </button>
+</div>
+<ul class="individuals">
+  <li *ngFor="let individual of individuals" (click)="onSelect(individual)"
+      [class.selected]="individual === selectedIndividual">
+    <span class="badge">{{individual.id}}</span>
+    <span>{{individual.firstName}}</span>
+    <span>{{individual.lastNme}}</span>
+    <span>{{individual.weightKgs}}</span>
+    <button class="delete"
+      (click)="delete(individual); $event.stopPropagation()">x</button>
+  </li>
+</ul>
