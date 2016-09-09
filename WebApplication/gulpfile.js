@@ -14,6 +14,7 @@ gulp.task('browser-sync', function() {
         files: [
           "Views/**/*.cshtml",
           "wwwroot/app/*.js",
+          "wwwroot/app/*.html",
           "wwwroot/css/style.css",
           "wwwroot/js/*.js"
         ]
