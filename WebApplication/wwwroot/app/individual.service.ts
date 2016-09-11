@@ -16,7 +16,7 @@ export class IndividualService {
   getIndividuals(): Promise<Individual[]> {
     return this.http.get(this.individualsUrl)
                .toPromise()
-               .then(response => response.json().data as Individual[])
+               .then(response => response.json() as Individual[])
                .catch(this.handleError);
   }
 

@@ -19,8 +19,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.individualService.getIndividuals()
-      //.then(individuals => this.individuals = individuals.slice(1, 5));
-      .then(individuals => console.log("Individuals: " + this.individuals.length))
+      .then(individuals => this.individuals = individuals.slice(1, 5));
   }
 
   gotoDetail(individual: Individual): void {

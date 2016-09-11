@@ -4,7 +4,7 @@ export class Individual{
     lastName: string;
     weightKgs: number;
 
-    tribe?: string;
-    clan?: string;
-    village?: string;
+    tribe: string;
+    clan: string;
+    village: string;
 }

@@ -1,9 +1,9 @@
 <h2>Individuals</h2>
 <div>
   <label>First Name:</label> <input #individualFirstName />
-  <label>First Name:</label> <input #individualLastName />
+  <label>Last Name:</label> <input #individualLastName />
   <label>Weight (kgs):</label> <input #individualWeightKgs />
-  <button (click)="add(individualFirstName.value, individualLastName.value, individualWeightKgs.value); 
+  <button (click)="add(individualFirstName.value, individualLastName.value, individualWeightKgs.value);
     individualFirstName.value='';
     individualLastName.value='';
     individualWeightKgs.value='';

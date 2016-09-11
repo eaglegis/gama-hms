@@ -1,7 +1,8 @@
-<h3>Individuals</h3>
+<h3>Individuals:</h3>
+{{individuals}}
 <div class="grid grid-pad">
-  <div *ngFor="let individual ofindividuals" (click)="gotoDetail(individual)" class="col-1-4">
-    <div class="module hero">
+  <div *ngFor="let individual of individuals" (click)="gotoDetail(individual)" class="col-1-4">
+    <div class="module individual">
       <h4>{{individual.firstName}} {{individual.lastName}}</h4>
     </div>
   </div>
