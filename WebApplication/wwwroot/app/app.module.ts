@@ -4,6 +4,7 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
 import { AppComponent }  from './app.component';
+import { DashboardComponent }   from './dashboard.component';
 import { IndividualsComponent }      from './individuals.component';
 import { IndividualDetailComponent }  from './individual-detail.component';
 import { IndividualService }          from './individual.service';
@@ -19,7 +20,7 @@ import { routing }              from './app.routing';
   ],
   declarations: [
     AppComponent,
-    //DashboardComponent,
+    DashboardComponent,
     IndividualDetailComponent,
     IndividualsComponent
     //IndividualSearchComponent
