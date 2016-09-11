@@ -1,10 +1,11 @@
 <div *ngIf="individual">
   <h2>{{individual.firstName}} {{individual.lastName}} details!</h2>
   <div>
-    <label>id: </label>{{individual.id}}</div>
-    <label>First Name: </label>{{individual.firstName}}</div>
-    <label>Last Name: </label>{{individual.lastName}}</div>
-    <label>Weight (kgs): </label>{{individual.weightKgs}}</div>
+    <label>id: </label>{{individual.id}}
+    <label>First Name: </label>{{individual.firstName}}
+    <label>Last Name: </label>{{individual.lastName}}
+    <label>Weight (kgs): </label>{{individual.weightKgs}}
+  </div>
   <div>
     <label>First Name: </label>
     <input [(ngModel)]="individual.firstName" placeholder="first name" />
