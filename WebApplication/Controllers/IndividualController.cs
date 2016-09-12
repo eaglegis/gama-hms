@@ -55,6 +55,12 @@ namespace WebApplication.Controllers
         public IActionResult Post([FromBody]Individual individual)
         {
             _logger.LogDebug(LoggingEvents.INSERT_ITEM, "Individual Insert");
+
+            if(individual == null){
+                _logger.LogWarning(LoggingEvents.INSERT_ITEM_INVALID, "Invalid Individual object");
+                return new BadRequestResult();
+            }
+
             _context.Individuals.Add(individual);
             _context.SaveChanges();
 

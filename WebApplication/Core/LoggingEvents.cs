@@ -13,6 +13,8 @@ namespace WebApplication.Core
         public const int UPDATE_ITEM_NOTFOUND = 4001;
         public const int DELETE_ITEM_NOT_FOUND = 4002;
 
+        public const int INSERT_ITEM_INVALID = 4003;
+
         public const int DEBUG_GENERAL = 9999;
     }
 }
