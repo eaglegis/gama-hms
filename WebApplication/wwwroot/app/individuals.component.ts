@@ -23,10 +23,14 @@ export class IndividualsComponent implements OnInit {
         .then(individuals => this.individuals = individuals);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.individualService.create(name)
+  add(firstName: string, lastName: string, weightKgs: number, tribe: string, clan: string, village: string): void {
+    firstName = firstName.trim();
+    lastName = lastName.trim();
+    tribe = tribe.trim();
+    clan = clan.trim();
+    village = village.trim();
+    if (!firstName || !lastName) { return; }
+    this.individualService.create(firstName, lastName, weightKgs, tribe, clan, village)
       .then(individual => {
         this.individuals.push(individual);
         this.selectedIndividual = null;

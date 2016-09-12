@@ -33,9 +33,16 @@ export class IndividualService {
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Individual> {
+  create(firstName: string, lastName: string, weightKgs: number, tribe: string, clan: string, village: string): Promise<Individual> {
     return this.http
-      .post(this.individualsUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.individualsUrl, JSON.stringify({
+        firstName: firstName,
+        lastName: lastName, 
+        weightKgs: weightKgs,
+        tribe: tribe,
+        clan: clan,
+        village: village
+      }), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);

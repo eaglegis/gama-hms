@@ -3,10 +3,16 @@
   <label>First Name:</label> <input #individualFirstName />
   <label>Last Name:</label> <input #individualLastName />
   <label>Weight (kgs):</label> <input #individualWeightKgs />
-  <button (click)="add(individualFirstName.value, individualLastName.value, individualWeightKgs.value);
+  <label>Tribe:</label> <input #individualTribe />
+  <label>Clan:</label> <input #individualClan />
+  <label>Village:</label> <input #individualVillage />
+  <button (click)="add(individualFirstName.value, individualLastName.value, individualWeightKgs.value, individualTribe.value, individualClan.value, individualVillage.value);
     individualFirstName.value='';
     individualLastName.value='';
     individualWeightKgs.value='';
+    individualTribe.value='';
+    individualClan.value='';
+    individualVillage.value='';
     ">
     Add
   </button>
