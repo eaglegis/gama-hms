@@ -41,7 +41,7 @@ export class IndividualsComponent implements OnInit {
     this.individualService
         .delete(individual.id)
         .then(() => {
-          this.individuals = this.individuals.filter(h => h !== individual);
+          this.individuals = this.individuals.filter(i => i !== individual);
           if (this.selectedIndividual === individual) { this.selectedIndividual = null; }
         });
   }
