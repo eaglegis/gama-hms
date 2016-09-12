@@ -27,7 +27,7 @@ export class IndividualService {
 
   delete(id: number): Promise<void> {
     let url = `${this.individualsUrl}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
+    return this.http.delete(url) // Don't set Content-Type header! https://github.com/angular/angular/issues/10612
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
