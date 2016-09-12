@@ -22,7 +22,7 @@
       [class.selected]="individual === selectedIndividual">
     <span class="badge">{{individual.id}}</span>
     <span>{{individual.firstName}}</span>
-    <span>{{individual.lastNme}}</span>
+    <span>{{individual.lastName}}</span>
     <span>{{individual.weightKgs}}</span>
     <button class="delete"
       (click)="delete(individual); $event.stopPropagation()">x</button>
