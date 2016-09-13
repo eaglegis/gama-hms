@@ -11,13 +11,17 @@
     'systemjs':                   'lib/npmlibs/systemjs',
     'zone.js':                    'lib/npmlibs/zone.js',
     'core-js':                    'lib/npmlibs/core-js',
-    'rxjs':                       'lib/npmlibs/rxjs'
+    'rxjs':                       'lib/npmlibs/rxjs',
+    'ng2-file-upload':            'lib/npmlibs/ng2-file-upload'
+    //'ng2-bootstrap'  :            'lib/npmlibs/ng2-bootstrap/ng2-bootstrap'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+    'ng2-file-upload':            { main: 'ng2-file-upload.js', defaultExtension: 'js' }
+    //'node_modules/ng2-bootstrap': { main: 'index.js', defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',

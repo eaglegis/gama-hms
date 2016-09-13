@@ -95,4 +95,16 @@ gulp.task("copy-deps:reflect-metadata", function () {
          .pipe(gulp.dest(paths.npmLibs + '/reflect-metadata/'));
 });
 
-gulp.task("copy-deps", ["copy-deps:rxjs", "copy-deps:rxjs-bundles", 'copy-deps:angular2', 'copy-deps:systemjs', 'copy-deps:es6-shim', 'copy-deps:zone.js', 'copy-deps:reflect-metadata']);
+gulp.task("copy-deps:ng2-file-upload", function () {
+    return gulp.src(paths.npmSrc + '/ng2-file-upload/bundles/*.*', { base: paths.npmSrc + '/ng2-file-upload/bundles/' })
+         .pipe(gulp.dest(paths.npmLibs + '/ng2-file-upload/'));
+});
+
+/*
+gulp.task("copy-deps:ng2-bootstrap", function () {
+    return gulp.src(paths.npmSrc + '/ng2-bootstrap/*.*', { base: paths.npmSrc + '/ng2-bootstrap/' })
+         .pipe(gulp.dest(paths.npmLibs + '/ng2-bootstrap/'));
+});
+*/
+
+gulp.task("copy-deps", ["copy-deps:rxjs", "copy-deps:rxjs-bundles", 'copy-deps:angular2', 'copy-deps:systemjs', 'copy-deps:es6-shim', 'copy-deps:zone.js', 'copy-deps:reflect-metadata', 'copy-deps:ng2-file-upload' /*, 'copy-deps:ng2-bootstrap'*/ ]);
