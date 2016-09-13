@@ -44,7 +44,7 @@ export class IndividualService {
         village: village
       }), {headers: this.headers})
       .toPromise()
-      .then(res => res.json().data)
+      .then(res => res.json())
       .catch(this.handleError);
   }
 

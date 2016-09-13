@@ -64,7 +64,7 @@ namespace WebApplication.Controllers
             _context.Individuals.Add(individual);
             _context.SaveChanges();
 
-            return new OkResult();
+            return Json(individual);
         }
 
         // PUT api/values/5
