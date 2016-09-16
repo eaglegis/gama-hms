@@ -1,6 +1,59 @@
 <h2>Individuals</h2>
 <div>
+
+
 <div class="container-fluid">
+
+	<div class="grid grid-pad">
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								#
+							</th>
+							<th>
+								First Name
+							</th>
+							<th>
+								Last Name
+							</th>
+							<th>
+								Weight (kgs)
+							</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let individual of individuals" (click)="gotoDetail(individual)">
+							<td>
+								<span class="badge">{{individual.id}}</span>
+							</td>
+							<td>
+								{{individual.firstName}}
+							</td>
+							<td>
+								{{individual.lastName}}
+							</td>
+							<td>
+								{{individual.weightKgs}}
+							</td>
+							<td>
+								<button type="button" class="btn btn-default" aria-label="Edit"
+						      (click)="edit(individual); $event.stopPropagation()"><span class = "glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+								<button type="button" class="btn btn-danger" aria-label="Delete"
+						      (click)="delete(individual); $event.stopPropagation()"><span class = "glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							</td>
+
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
 	<div class="row">
 		<div class="col-md-12">
 			<form role="form"  (ngSubmit)="add()" #heroForm="ngForm">
@@ -9,7 +62,7 @@
 					<input type="text" class="form-control" id="firstName" required
                         [(ngModel)]="editedIndividual.firstName" name="firstName"
                         #firstName="ngModel"/>
-                    <div [hidden]="firstName.valid || firstName.pristine" 
+                    <div [hidden]="firstName.valid || firstName.pristine"
                         class="alert alert-danger">
                         First Name is required
                     </div>
@@ -19,7 +72,7 @@
 					<input type="text" class="form-control" id="lastName" required
                         [(ngModel)]="editedIndividual.lastName" name="lastName"
                         #lastName="ngModel"/>
-                    <div [hidden]="lastName.valid || lastName.pristine" 
+                    <div [hidden]="lastName.valid || lastName.pristine"
                         class="alert alert-danger">
                         Last Name is required
                     </div>
@@ -29,7 +82,7 @@
 					<input type="number" class="form-control" id="weightKgs" required
                         [(ngModel)]="editedIndividual.weightKgs" name="weightKgs"
                         #weightKgs="ngModel"/>
-                    <div [hidden]="weightKgs.valid || weightKgs.pristine" 
+                    <div [hidden]="weightKgs.valid || weightKgs.pristine"
                         class="alert alert-danger">
                         Weight is required
                     </div>
@@ -80,7 +133,5 @@
     <span>{{individual.firstName}}</span>
     <span>{{individual.lastName}}</span>
     <span>{{individual.weightKgs}}</span>
-    <button class="delete"
-      (click)="delete(individual); $event.stopPropagation()">x</button>
   </li>
 </ul>
