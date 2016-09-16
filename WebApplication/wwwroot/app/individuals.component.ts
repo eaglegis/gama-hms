@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgStyle} from '@angular/common';
 import { Router }            from '@angular/router';
 
-
-import {FILE_UPLOAD_DIRECTIVES, FileUploader} from 'ng2-file-upload';
+import { FileUploader } from 'ng2-file-upload';
 
 import { Individual }                from './individual';
 import { IndividualService }         from './individual.service';
@@ -13,17 +11,16 @@ const imageUploadUrl = 'api/imageUpload';
 @Component({
   selector: 'my-individuals',
   templateUrl: 'app/individuals.component.html',
-  styleUrls:  ['app/individuals.component.css'],
-  directives: [FILE_UPLOAD_DIRECTIVES, NgClass, NgStyle, CORE_DIRECTIVES, FORM_DIRECTIVES]
-
+  styleUrls:  ['app/individuals.component.css']
 })
+
 export class IndividualsComponent implements OnInit {
   individuals: Individual[];
   selectedIndividual: Individual;
 
   public uploader:FileUploader = new FileUploader({url: imageUploadUrl});
   public hasBaseDropZoneOver:boolean = false;
-  
+
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
   }
@@ -44,7 +41,7 @@ export class IndividualsComponent implements OnInit {
 // firstName: string, lastName: string, weightKgs: number, tribe: string, clan: string, village: string
   add(): void {
     if(this.editedIndividual.firstName){
-      this.editedIndividual.firstName = this.editedIndividual.firstName.trim();      
+      this.editedIndividual.firstName = this.editedIndividual.firstName.trim();
     }
     if(this.editedIndividual.lastName){
       this.editedIndividual.lastName = this.editedIndividual.lastName.trim();

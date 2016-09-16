@@ -9,7 +9,7 @@
 					<input type="text" class="form-control" id="firstName" required
                         [(ngModel)]="editedIndividual.firstName" name="firstName"
                         #firstName="ngModel"/>
-                    <div [hidden]="firstName.valid || firstName.pristine" 
+                    <div [hidden]="firstName.valid || firstName.pristine"
                         class="alert alert-danger">
                         First Name is required
                     </div>
@@ -19,7 +19,7 @@
 					<input type="text" class="form-control" id="lastName" required
                         [(ngModel)]="editedIndividual.lastName" name="lastName"
                         #lastName="ngModel"/>
-                    <div [hidden]="lastName.valid || lastName.pristine" 
+                    <div [hidden]="lastName.valid || lastName.pristine"
                         class="alert alert-danger">
                         Last Name is required
                     </div>
@@ -29,7 +29,7 @@
 					<input type="number" class="form-control" id="weightKgs" required
                         [(ngModel)]="editedIndividual.weightKgs" name="weightKgs"
                         #weightKgs="ngModel"/>
-                    <div [hidden]="weightKgs.valid || weightKgs.pristine" 
+                    <div [hidden]="weightKgs.valid || weightKgs.pristine"
                         class="alert alert-danger">
                         Weight is required
                     </div>
@@ -80,15 +80,11 @@
     <span>{{individual.firstName}}</span>
     <span>{{individual.lastName}}</span>
     <span>{{individual.weightKgs}}</span>
-    <div ng2FileDrop
-                 [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-                 (fileOver)="fileOverBase($event)"
-                 [uploader]="uploader"
-                 class="well my-drop-zone">
-                Base drop zone
-    </div>
 
-    <div class="col-md-9" style="margin-bottom: 40px">
+		<!-- <input type="file" ng2FileSelect [uploader]="uploader" /> -->
+
+
+    <!-- <div class="col-md-9" style="margin-bottom: 40px">
         <h3>Upload queue</h3>
         <p>Queue length: </p>
 
@@ -154,7 +150,7 @@
                 <span class="glyphicon glyphicon-trash"></span> Remove all
             </button>
         </div>
-    </div>
+    </div> -->
 
     <button class="delete"
       (click)="delete(individual); $event.stopPropagation()">x</button>
