@@ -1,10 +1,43 @@
 <h3>Individuals</h3>
 <div class="grid grid-pad">
-  <div *ngFor="let individual of individuals" (click)="gotoDetail(individual)" class="col-1-4">
-    <div class="module individual">
-      <h4>{{individual.firstName}} {{individual.lastName}} ({{individual.weightKgs}} kgs)</h4>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							#
+						</th>
+						<th>
+							First Name
+						</th>
+						<th>
+							Last Name
+						</th>
+						<th>
+							Weight (kgs)
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let individual of individuals" (click)="gotoDetail(individual)">
+						<td>
+							{{individual.id}}
+						</td>
+						<td>
+							{{individual.firstName}}
+						</td>
+						<td>
+							{{individual.lastName}}
+						</td>
+						<td>
+							{{individual.weightKgs}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 <!--
 <indivudal-search></individual-search>
