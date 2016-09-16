@@ -27,22 +27,16 @@ export class IndividualService {
 
   delete(id: number): Promise<void> {
     let url = `${this.individualsUrl}/${id}`;
-    return this.http.delete(url) // Don't set Content-Type header! https://github.com/angular/angular/issues/10612
+    return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
   }
 
-  create(firstName: string, lastName: string, weightKgs: number, tribe: string, clan: string, village: string): Promise<Individual> {
+  create(individual:Individual): Promise<Individual> {
     return this.http
-      .post(this.individualsUrl, JSON.stringify({
-        firstName: firstName,
-        lastName: lastName, 
-        weightKgs: weightKgs,
-        tribe: tribe,
-        clan: clan,
-        village: village
-      }), {headers: this.headers})
+      .post(this.individualsUrl, JSON.stringify(individual
+      ), {headers: this.headers})
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);

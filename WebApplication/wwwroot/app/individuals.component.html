@@ -1,21 +1,77 @@
 <h2>Individuals</h2>
 <div>
-  <label>First Name:</label> <input #individualFirstName />
-  <label>Last Name:</label> <input #individualLastName />
-  <label>Weight (kgs):</label> <input #individualWeightKgs />
-  <label>Tribe:</label> <input #individualTribe />
-  <label>Clan:</label> <input #individualClan />
-  <label>Village:</label> <input #individualVillage />
-  <button (click)="add(individualFirstName.value, individualLastName.value, individualWeightKgs.value, individualTribe.value, individualClan.value, individualVillage.value);
-    individualFirstName.value='';
-    individualLastName.value='';
-    individualWeightKgs.value='';
-    individualTribe.value='';
-    individualClan.value='';
-    individualVillage.value='';
-    ">
-    Add
-  </button>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<form role="form"  (ngSubmit)="add()" #heroForm="ngForm">
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" class="form-control" id="firstName" required
+                        [(ngModel)]="editedIndividual.firstName" name="firstName"
+                        #firstName="ngModel"/>
+                    <div [hidden]="firstName.valid || firstName.pristine" 
+                        class="alert alert-danger">
+                        First Name is required
+                    </div>
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" class="form-control" id="lastName" required
+                        [(ngModel)]="editedIndividual.lastName" name="lastName"
+                        #lastName="ngModel"/>
+                    <div [hidden]="lastName.valid || lastName.pristine" 
+                        class="alert alert-danger">
+                        Last Name is required
+                    </div>
+				</div>
+				<div class="form-group">
+					<label for="weightKgs">Weight (kgs)</label>
+					<input type="number" class="form-control" id="weightKgs" required
+                        [(ngModel)]="editedIndividual.weightKgs" name="weightKgs"
+                        #weightKgs="ngModel"/>
+                    <div [hidden]="weightKgs.valid || weightKgs.pristine" 
+                        class="alert alert-danger">
+                        Weight is required
+                    </div>
+				</div>
+				<!--div class="form-group">
+					<label for="photo">Photo</label>
+					<input type="file" id="photo"
+                        [(ngModel)]="editedIndividual.photo" name="photo"
+                        #photo="ngModel"/>
+                    />
+					<p class="help-block">
+						Upload a photograph here.
+					</p>
+				</div-->
+
+				<div class="form-group">
+					<label for="tribe">Tribe</label>
+					<input type="text" class="form-control" id="tribe"
+                        [(ngModel)]="editedIndividual.tribe" name="tribe"
+                        #tribe="ngModel"/>
+				</div>
+				<div class="form-group">
+					<label for="clan">Clan</label>
+					<input type="text" class="form-control" id="clan"
+                        [(ngModel)]="editedIndividual.clan" name="clan"
+                        #clan="ngModel"/>
+				</div>
+				<div class="form-group">
+					<label for="village">Village</label>
+					<input type="text" class="form-control" id="village"
+                        [(ngModel)]="editedIndividual.village" name="village"
+                        #village="ngModel"/>
+				</div>
+
+				<button type="submit" class="btn btn-default">
+					Add
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+
 </div>
 <ul class="individuals">
   <li *ngFor="let individual of individuals" (click)="onSelect(individual)"
