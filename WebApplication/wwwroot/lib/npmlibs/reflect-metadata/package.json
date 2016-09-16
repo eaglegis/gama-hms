@@ -1,21 +1,13 @@
 {
   "_args": [
     [
-      {
-        "name": "reflect-metadata",
-        "raw": "reflect-metadata@^0.1.3",
-        "rawSpec": "^0.1.3",
-        "scope": null,
-        "spec": ">=0.1.3 <0.2.0",
-        "type": "range"
-      },
+      "reflect-metadata@^0.1.3",
       "/Users/lhunt/dev/playground/aspnetcoreangular2/WebApplication"
     ]
   ],
   "_from": "reflect-metadata@>=0.1.3 <0.2.0",
   "_id": "reflect-metadata@0.1.8",
   "_inCache": true,
-  "_installable": true,
   "_location": "/reflect-metadata",
   "_nodeVersion": "6.0.0",
   "_npmOperationalInternal": {
@@ -64,10 +56,11 @@
   },
   "gitHead": "d737a908100aa8ca7f083f815f06875cb80a217e",
   "homepage": "http://rbuckton.github.io/ReflectDecorators",
+  "installable": true,
   "keywords": [
     "decorator",
-    "metadata",
     "javascript",
+    "metadata",
     "reflect"
   ],
   "license": "Apache-2.0",
@@ -80,13 +73,12 @@
   "main": "Reflect.js",
   "maintainers": [
     {
-      "email": "rbuckton@chronicles.org",
-      "name": "rbuckton"
+      "name": "rbuckton",
+      "email": "rbuckton@chronicles.org"
     }
   ],
   "name": "reflect-metadata",
   "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rbuckton/ReflectDecorators.git"
