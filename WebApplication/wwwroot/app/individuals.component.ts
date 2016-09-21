@@ -13,7 +13,7 @@ export class IndividualsComponent implements OnInit {
   individuals: Individual[];
   selectedIndividual: Individual;
 
-  editedIndividual: Individual = new Individual();
+  editedIndividual: Individual = null; //new Individual();
 
   constructor(
     private individualService: IndividualService,
@@ -37,7 +37,7 @@ export class IndividualsComponent implements OnInit {
         .then(individual => {
           this.individuals.push(individual);
           this.selectedIndividual = null;
-          this.editedIndividual = new Individual();
+          this.editedIndividual = null;
         });
 
     } else {
@@ -48,7 +48,7 @@ export class IndividualsComponent implements OnInit {
             this.individuals[index] = individual;
           }
           this.selectedIndividual = null;
-          this.editedIndividual = new Individual();
+          this.editedIndividual = null;
         });
 
     }
@@ -79,9 +79,13 @@ export class IndividualsComponent implements OnInit {
     this.editedIndividual = Object.assign({}, individual);
   }
 
-  reset(): void {
+  createNew(): void {
     // Copy object
     this.editedIndividual = new Individual();
+  }
+
+  reset(): void {
+    this.editedIndividual = null; //new Individual();
   }
 
   delete(individual: Individual): void {

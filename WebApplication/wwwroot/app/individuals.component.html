@@ -46,11 +46,13 @@
 						</tr>
 					</tbody>
 				</table>
+				<button type="button" *ngIf="editedIndividual==null" class="btn btn-default" aria-label="Add New Record"
+					(click)="createNew(); $event.stopPropagation()"><span class = "glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 			</div>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row" *ngIf="editedIndividual!=null">
 		<div class="col-md-12">
 			<form role="form"  (ngSubmit)="save()" #heroForm="ngForm">
 				<div class="form-group">
@@ -117,7 +119,7 @@
 					<span [hidden]="!editedIndividual.id">Update</span>
 					<span [hidden]="editedIndividual.id">Add</span>
 				</button>
-				<button click="reset()" *ngIf="editedIndividual.id" class="btn btn-danger">
+				<button type="button" (click)="reset()" class="btn btn-danger">
 					Cancel
 				</button>
 			</form>
