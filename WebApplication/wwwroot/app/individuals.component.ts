@@ -25,7 +25,7 @@ export class IndividualsComponent implements OnInit {
     this.hasBaseDropZoneOver = e;
   }
 
-  editedIndividual: Individual = new Individual();
+  editedIndividual: Individual = null;
 
   constructor(
     private individualService: IndividualService,
@@ -37,31 +37,67 @@ export class IndividualsComponent implements OnInit {
         .then(individuals => this.individuals = individuals);
   }
 
-// individualFirstName.value, individualLastName.value, individualWeightKgs.value, individualTribe.value, individualClan.value, individualVillage.value
-// firstName: string, lastName: string, weightKgs: number, tribe: string, clan: string, village: string
-  add(): void {
-    if(this.editedIndividual.firstName){
-      this.editedIndividual.firstName = this.editedIndividual.firstName.trim();
-    }
-    if(this.editedIndividual.lastName){
-      this.editedIndividual.lastName = this.editedIndividual.lastName.trim();
-    }
-    if(this.editedIndividual.tribe){
-      this.editedIndividual.tribe = this.editedIndividual.tribe.trim();
-    }
-    if(this.editedIndividual.clan){
-      this.editedIndividual.clan = this.editedIndividual.clan.trim();
-    }
-    if(this.editedIndividual.village){
-      this.editedIndividual.village = this.editedIndividual.village.trim();
-    }
+  // individualFirstName.value, individualLastName.value, individualWeightKgs.value, individualTribe.value, individualClan.value, individualVillage.value
+  // firstName: string, lastName: string, weightKgs: number, tribe: string, clan: string, village: string
+  save(): void {
+    this.editedIndividual = this.trimIndividual(this.editedIndividual);
+
     if (!this.editedIndividual.firstName || !this.editedIndividual.lastName) { return; }
-    this.individualService.create(this.editedIndividual)
-      .then(individual => {
-        this.individuals.push(individual);
-        this.selectedIndividual = null;
-        this.editedIndividual = new Individual();
-      });
+
+    if(this.editedIndividual.id === undefined){
+      this.individualService.create(this.editedIndividual)
+        .then(individual => {
+          this.individuals.push(individual);
+          this.selectedIndividual = null;
+          this.editedIndividual = null;
+        });
+
+    } else {
+      this.individualService.update(this.editedIndividual)
+        .then(individual => {
+          var index:number = this.individuals.findIndex(i => i.id == individual.id);
+          if(index >= 0){
+            this.individuals[index] = individual;
+          }
+          this.selectedIndividual = null;
+          this.editedIndividual = null;
+        });
+
+    }
+  }
+
+  trimIndividual(individual: Individual):Individual{
+    if(individual.firstName){
+      individual.firstName = individual.firstName.trim();
+    }
+    if(individual.lastName){
+      individual.lastName = individual.lastName.trim();
+    }
+    if(individual.tribe){
+      individual.tribe = individual.tribe.trim();
+    }
+    if(individual.clan){
+      individual.clan = individual.clan.trim();
+    }
+    if(individual.village){
+      individual.village = individual.village.trim();
+    }
+
+    return individual;
+  }
+
+  edit(individual: Individual): void {
+    // Copy object
+    this.editedIndividual = Object.assign({}, individual);
+  }
+
+  createNew(): void {
+    // Copy object
+    this.editedIndividual = new Individual();
+  }
+
+  reset(): void {
+    this.editedIndividual = null; //new Individual();
   }
 
   delete(individual: Individual): void {
