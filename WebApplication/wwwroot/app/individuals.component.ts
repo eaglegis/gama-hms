@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 
-import { FileUploader } from 'ng2-file-upload';
+import { FileUploader, FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 import { Individual }                from './individual';
 import { IndividualService }         from './individual.service';

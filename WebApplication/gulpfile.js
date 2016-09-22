@@ -96,7 +96,7 @@ gulp.task("copy-deps:reflect-metadata", function () {
 });
 
 gulp.task("copy-deps:ng2-file-upload", function () {
-    return gulp.src(paths.npmSrc + '/ng2-file-upload/bundles/*.*', { base: paths.npmSrc + '/ng2-file-upload/bundles/' })
+    return gulp.src(paths.npmSrc + '/ng2-file-upload/*.*', { base: paths.npmSrc + '/ng2-file-upload/' })
          .pipe(gulp.dest(paths.npmLibs + '/ng2-file-upload/'));
 });
 

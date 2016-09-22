@@ -10,13 +10,15 @@ import { IndividualDetailComponent }  from './individual-detail.component';
 import { IndividualService }          from './individual.service';
 // import { IndividualSearchComponent }  from './individual-search.component';
 import { routing }              from './app.routing';
+import { FileUploadModule } from 'ng2-file-upload/';
 
 @NgModule({
   imports:      [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    FileUploadModule
   ],
   declarations: [
     AppComponent,
