@@ -16,6 +16,7 @@ namespace WebApplication.Data
         public DbSet<Organisation> Organisations { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Position> Positions { get; set; }
+        public DbSet<FileAttachment> FileAttachments { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
