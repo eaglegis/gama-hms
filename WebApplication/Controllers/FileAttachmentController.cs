@@ -30,7 +30,14 @@ namespace WebApplication.Controllers
         public IEnumerable<FileAttachment> Index()
         {
             _logger.LogDebug(LoggingEvents.LIST_ITEMS, "FileAttachment Index");
-            return _context.FileAttachments.ToList();
+            List<FileAttachment> results = _context.FileAttachments.ToList();
+            
+            // Strip out file contents from results:
+            foreach(FileAttachment result in results){
+                result.FileContentsBase64 = "";
+            }
+
+            return results;
         }
 
         [HttpGet("{id}")]
