@@ -6,7 +6,7 @@ import { FileUploader, FileSelectDirective, FileDropDirective } from 'ng2-file-u
 import { Individual }                from './individual';
 import { IndividualService }         from './individual.service';
 
-const imageUploadUrl = 'api/imageUpload';
+const imageUploadUrl = 'api/FileAttachment';
 
 @Component({
   selector: 'my-individuals',

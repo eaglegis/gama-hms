@@ -55,31 +55,29 @@ namespace WebApplication.Controllers
         public IActionResult Upload(Microsoft.AspNetCore.Http.IFormFile file)
         {
             _logger.LogDebug(LoggingEvents.INSERT_ITEM, "File Insert");
+            _logger.LogDebug(file.FileName);
+            _logger.LogDebug(string.Format("{0} bytes", file.Length));
 
-            _logger.LogDebug(file.Name);
+            FileAttachment fileAttachment = new FileAttachment();
 
-            return Json("OK");
-/*
-            var postedFile = httpRequest.Files[file];
-            var filePath = HttpContext.Current.Server.MapPath("~/" + postedFile.FileName);
-            postedFile.SaveAs(filePath);
-                        // NOTE: To store in memory use postedFile.InputStream
-                    }
-
-                    return Request.CreateResponse(HttpStatusCode.Created);
+            fileAttachment.Filename = file.FileName;
+            if(file.Length>0){
+                using (var fileStream = file.OpenReadStream())
+                using (var ms = new System.IO.MemoryStream())
+                {
+                    fileStream.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    fileAttachment.FileContentsBase64  = Convert.ToBase64String(fileBytes);
                 }
 
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            if(individual == null){
-                _logger.LogWarning(LoggingEvents.INSERT_ITEM_INVALID, "Invalid Individual object");
+                _context.FileAttachments.Add(fileAttachment);
+                _context.SaveChanges();
+
+                return Json(fileAttachment.Id);
+            } else{
+                _logger.LogWarning(string.Format("File attachment {0} was empty", file.FileName));
                 return new BadRequestResult();
             }
-
-            _context.Individuals.Add(individual);
-            _context.SaveChanges();
-
-            return Json(individual);
-*/
         }
 
         // PUT api/values/5
