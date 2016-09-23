@@ -12,6 +12,7 @@ namespace WebApplication.Models
       public string FirstName { get; set; }
       public string LastName { get; set; }
       public decimal WeightKgs {get;set; }
+      public int ProfileImageId {get;set; }
 
       public string Tribe { get; set; }
       public string Clan { get; set; }

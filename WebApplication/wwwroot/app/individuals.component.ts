@@ -29,7 +29,17 @@ export class IndividualsComponent implements OnInit {
 
   constructor(
     private individualService: IndividualService,
-    private router: Router) { }
+    private router: Router) {
+        this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+            console.log("ImageUpload:uploaded:", item, response, status);
+            console.log("id: " + response);
+
+            this.editedIndividual.profileImageId = response;
+        };
+        this.uploader.onCompleteAll =  () => {
+            console.log("ImageUpload:All uploaded");
+        };
+     }
 
   getIndividuals(): void {
     this.individualService
@@ -37,8 +47,6 @@ export class IndividualsComponent implements OnInit {
         .then(individuals => this.individuals = individuals);
   }
 
-  // individualFirstName.value, individualLastName.value, individualWeightKgs.value, individualTribe.value, individualClan.value, individualVillage.value
-  // firstName: string, lastName: string, weightKgs: number, tribe: string, clan: string, village: string
   save(): void {
     this.editedIndividual = this.trimIndividual(this.editedIndividual);
 

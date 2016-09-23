@@ -18,6 +18,9 @@
 								Last Name
 							</th>
 							<th>
+								Photo
+							</th>
+							<th>
 								Weight (kgs)
 							</th>
 							<th></th>
@@ -33,6 +36,9 @@
 							</td>
 							<td>
 								{{individual.lastName}}
+							</td>
+							<td>
+								<img *ngIf="individual.profileImageId>0" src="api/fileAttachment/{{individual.profileImageId}}" width="100"/>
 							</td>
 							<td>
 								{{individual.weightKgs}}
@@ -85,16 +91,15 @@
                         Weight is required
                     </div>
 				</div>
-				<!--div class="form-group">
+				
+				<div class="form-group">
 					<label for="photo">Photo</label>
-					<input type="file" id="photo"
-                        [(ngModel)]="editedIndividual.photo" name="photo"
-                        #photo="ngModel"/>
-                    />
+					<img *ngIf="editedIndividual.profileImageId>0" src="api/fileAttachment/{{editedIndividual.profileImageId}}" width="100"/>
+					<span *ngIf="editedIndividual.profileImageId == 0" class = "glyphicon glyphicon-picture" aria-hidden="true"></span>
 					<p class="help-block">
 						Upload a photograph here.
 					</p>
-				</div-->
+				</div>
 
 
 				<input type="file" ng2FileSelect [uploader]="uploader" />
