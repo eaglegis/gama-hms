@@ -33,9 +33,8 @@ namespace WebApplication.Controllers
             return _context.FileAttachments.ToList();
         }
 
-        // GET api/individual
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public FileResult Get(int id)
         {
             _logger.LogDebug(LoggingEvents.GET_ITEM, "FileAttachment Get ({0})", id);
 
@@ -43,10 +42,14 @@ namespace WebApplication.Controllers
             
             if(fileAttachment == null){
                 _logger.LogError(LoggingEvents.GET_ITEM_NOTFOUND, "FileAttachment not found ({0})", id);
-                return new NotFoundResult();
+                return null;
+                //return new NotFoundResult();
             }
 
-            return Json(fileAttachment);
+            HttpContext.Response.ContentType = fileAttachment.ContentType;
+            FileContentResult result = new FileContentResult(Convert.FromBase64String(fileAttachment.FileContentsBase64), fileAttachment.ContentType);
+
+            return result;
         }
 
 
@@ -61,6 +64,8 @@ namespace WebApplication.Controllers
             FileAttachment fileAttachment = new FileAttachment();
 
             fileAttachment.Filename = file.FileName;
+            fileAttachment.ContentType = file.ContentType;
+
             if(file.Length>0){
                 using (var fileStream = file.OpenReadStream())
                 using (var ms = new System.IO.MemoryStream())
@@ -80,37 +85,19 @@ namespace WebApplication.Controllers
             }
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]Individual individual)
-        {
-            _logger.LogDebug(LoggingEvents.UPDATE_ITEM, "Individual Update ({0})", id);
-
-            if(_context.Individuals.Any(I => I.Id == id) == false){
-                _logger.LogError(LoggingEvents.UPDATE_ITEM_NOTFOUND, "Individual not found ({0})", id);
-                return new NotFoundResult();
-            }
-
-            _context.Individuals.Update(individual);
-            _context.SaveChanges();
-
-            return new OkResult();
-        }
-
-        // DELETE api/values/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _logger.LogDebug(LoggingEvents.DELETE_ITEM, "Individual Delete ({0})", id);
+            _logger.LogDebug(LoggingEvents.DELETE_ITEM, "FileAttachment Delete ({0})", id);
 
-            Individual individual = _context.Individuals.SingleOrDefault(I => I.Id == id);
+            FileAttachment fileAttachment = _context.FileAttachments.SingleOrDefault(I => I.Id == id);
 
-            if(individual == null){
-                _logger.LogError(LoggingEvents.DELETE_ITEM_NOT_FOUND, "Individual not found ({0})", id);
+            if(fileAttachment == null){
+                _logger.LogError(LoggingEvents.DELETE_ITEM_NOT_FOUND, "FileAttachment not found ({0})", id);
                 return new NotFoundResult();
             }
 
-            _context.Individuals.Remove(individual);
+            _context.FileAttachments.Remove(fileAttachment);
             _context.SaveChanges();
 
             return new OkResult();
