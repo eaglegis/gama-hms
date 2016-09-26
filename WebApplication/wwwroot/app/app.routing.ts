@@ -20,6 +20,10 @@ const appRoutes: Routes = [
     component: IndividualDetailComponent
   },
   {
+    path: 'new',
+    component: IndividualDetailComponent
+  },
+  {
     path: 'individuals',
     component: IndividualsComponent
   }

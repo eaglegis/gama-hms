@@ -1,19 +1,145 @@
-<div *ngIf="individual">
-  <h2>{{individual.firstName}} {{individual.lastName}} details!</h2>
-  <div>
-    <label>id: </label>{{individual.id}}
-    <label>First Name: </label>{{individual.firstName}}
-    <label>Last Name: </label>{{individual.lastName}}
-    <label>Weight (kgs): </label>{{individual.weightKgs}}
+<div class="row" *ngIf="individual!=null">
+  <div class="col-md-12">
+    <form role="form"  (ngSubmit)="save()" #heroForm="ngForm">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" required
+                      [(ngModel)]="individual.firstName" name="firstName"
+                      #firstName="ngModel"/>
+                  <div [hidden]="firstName.valid || firstName.pristine"
+                      class="alert alert-danger">
+                      First Name is required
+                  </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" required
+                      [(ngModel)]="individual.lastName" name="lastName"
+                      #lastName="ngModel"/>
+                  <div [hidden]="lastName.valid || lastName.pristine"
+                      class="alert alert-danger">
+                      Last Name is required
+                  </div>
+      </div>
+      <div class="form-group">
+        <label for="weightKgs">Weight (kgs)</label>
+        <input type="number" class="form-control" id="weightKgs" required
+                      [(ngModel)]="individual.weightKgs" name="weightKgs"
+                      #weightKgs="ngModel"/>
+                  <div [hidden]="weightKgs.valid || weightKgs.pristine"
+                      class="alert alert-danger">
+                      Weight is required
+                  </div>
+      </div>
+
+      <div class="form-group">
+        <label for="photo">Photo</label>
+        <img *ngIf="individual.profileImageId>0" src="api/fileAttachment/{{individual.profileImageId}}" width="100"/>
+        <span *ngIf="individual.profileImageId == 0" class = "glyphicon glyphicon-picture" aria-hidden="true"></span>
+        <p class="help-block">
+          Upload a photograph here.
+        </p>
+      </div>
+
+
+      <input type="file" ng2FileSelect [uploader]="uploader" />
+
+
+      <div class="col-md-9" style="margin-bottom: 40px">
+          <h3>Upload queue</h3>
+          <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+          <table class="table">
+              <thead>
+              <tr>
+                  <th width="50%">Name</th>
+                  <th>Size</th>
+                  <th>Progress</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of uploader.queue">
+                  <td><strong>{{ item?.file?.name }}</strong></td>
+                  <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                  <td *ngIf="uploader.isHTML5">
+                      <div class="progress" style="margin-bottom: 0;">
+                          <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                      </div>
+                  </td>
+                  <td class="text-center">
+                      <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                      <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                      <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                  </td>
+                  <td nowrap>
+                      <button type="button" class="btn btn-success btn-xs"
+                              (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                          <span class="glyphicon glyphicon-upload"></span> Upload
+                      </button>
+                      <button type="button" class="btn btn-warning btn-xs"
+                              (click)="item.cancel()" [disabled]="!item.isUploading">
+                          <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                      </button>
+                      <button type="button" class="btn btn-danger btn-xs"
+                              (click)="item.remove()">
+                          <span class="glyphicon glyphicon-trash"></span> Remove
+                      </button>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+
+          <div>
+              <div>
+                  Queue progress:
+                  <div class="progress" style="">
+                      <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                  </div>
+              </div>
+              <button type="button" class="btn btn-success btn-s"
+                      (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                  <span class="glyphicon glyphicon-upload"></span> Upload all
+              </button>
+              <button type="button" class="btn btn-warning btn-s"
+                      (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                  <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+              </button>
+              <button type="button" class="btn btn-danger btn-s"
+                      (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                  <span class="glyphicon glyphicon-trash"></span> Remove all
+              </button>
+          </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="tribe">Tribe</label>
+        <input type="text" class="form-control" id="tribe"
+                      [(ngModel)]="individual.tribe" name="tribe"
+                      #tribe="ngModel"/>
+      </div>
+      <div class="form-group">
+        <label for="clan">Clan</label>
+        <input type="text" class="form-control" id="clan"
+                      [(ngModel)]="individual.clan" name="clan"
+                      #clan="ngModel"/>
+      </div>
+      <div class="form-group">
+        <label for="village">Village</label>
+        <input type="text" class="form-control" id="village"
+                      [(ngModel)]="individual.village" name="village"
+                      #village="ngModel"/>
+      </div>
+
+      <button type="submit" class="btn btn-default">
+        <span [hidden]="!individual.id">Update</span>
+        <span [hidden]="individual.id">Add</span>
+      </button>
+      <button type="button" (click)="goBack()" class="btn btn-danger">
+        Cancel
+      </button>
+    </form>
   </div>
-  <div>
-    <label>First Name: </label>
-    <input [(ngModel)]="individual.firstName" placeholder="first name" />
-    <label>Last Name: </label>
-    <input [(ngModel)]="individual.lastName" placeholder="last name" />
-    <label>Weight (gks): </label>
-    <input [(ngModel)]="individual.weightKgs" placeholder="weight" />
-   </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
 </div>

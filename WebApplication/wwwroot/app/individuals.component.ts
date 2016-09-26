@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 
-import { FileUploader, FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 import { Individual }                from './individual';
 import { IndividualService }         from './individual.service';
-
-const imageUploadUrl = 'api/FileAttachment';
 
 @Component({
   selector: 'my-individuals',
@@ -16,29 +13,12 @@ const imageUploadUrl = 'api/FileAttachment';
 
 export class IndividualsComponent implements OnInit {
   individuals: Individual[];
-  selectedIndividual: Individual;
 
-  public uploader:FileUploader = new FileUploader({url: imageUploadUrl});
-  public hasBaseDropZoneOver:boolean = false;
-
-  public fileOverBase(e:any):void {
-    this.hasBaseDropZoneOver = e;
-  }
-
-  editedIndividual: Individual = null;
+  selectedIndividual: Individual = null;
 
   constructor(
     private individualService: IndividualService,
     private router: Router) {
-        this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
-            console.log("ImageUpload:uploaded:", item, response, status);
-            console.log("id: " + response);
-
-            this.editedIndividual.profileImageId = response;
-        };
-        this.uploader.onCompleteAll =  () => {
-            console.log("ImageUpload:All uploaded");
-        };
      }
 
   getIndividuals(): void {
@@ -47,65 +27,18 @@ export class IndividualsComponent implements OnInit {
         .then(individuals => this.individuals = individuals);
   }
 
-  save(): void {
-    this.editedIndividual = this.trimIndividual(this.editedIndividual);
-
-    if (!this.editedIndividual.firstName || !this.editedIndividual.lastName) { return; }
-
-    if(this.editedIndividual.id === undefined){
-      this.individualService.create(this.editedIndividual)
-        .then(individual => {
-          this.individuals.push(individual);
-          this.selectedIndividual = null;
-          this.editedIndividual = null;
-        });
-
-    } else {
-      this.individualService.update(this.editedIndividual)
-        .then(individual => {
-          var index:number = this.individuals.findIndex(i => i.id == individual.id);
-          if(index >= 0){
-            this.individuals[index] = individual;
-          }
-          this.selectedIndividual = null;
-          this.editedIndividual = null;
-        });
-
-    }
-  }
-
-  trimIndividual(individual: Individual):Individual{
-    if(individual.firstName){
-      individual.firstName = individual.firstName.trim();
-    }
-    if(individual.lastName){
-      individual.lastName = individual.lastName.trim();
-    }
-    if(individual.tribe){
-      individual.tribe = individual.tribe.trim();
-    }
-    if(individual.clan){
-      individual.clan = individual.clan.trim();
-    }
-    if(individual.village){
-      individual.village = individual.village.trim();
-    }
-
-    return individual;
-  }
-
   edit(individual: Individual): void {
     // Copy object
-    this.editedIndividual = Object.assign({}, individual);
+    this.selectedIndividual = Object.assign({}, individual);
+    this.gotoDetail();
   }
 
   createNew(): void {
-    // Copy object
-    this.editedIndividual = new Individual();
+    this.router.navigate(['/new']);
   }
 
   reset(): void {
-    this.editedIndividual = null; //new Individual();
+    this.selectedIndividual = null; //new Individual();
   }
 
   delete(individual: Individual): void {
