@@ -3,6 +3,8 @@ import { Router }            from '@angular/router';
 
 import { Individual }        from './individual';
 import { IndividualService } from './individual.service';
+import { Organisation }        from './organisation';
+import { OrganisationService } from './organisation.service';
 
 @Component({
   selector: 'my-dashboard',
@@ -11,20 +13,19 @@ import { IndividualService } from './individual.service';
 })
 export class DashboardComponent implements OnInit {
   individuals: Individual[] = [];
+  organisations: Organisation[] = [];
 
   constructor(
     private router: Router,
-    private individualService: IndividualService) {
+    private individualService: IndividualService,
+    private organisationService: OrganisationService) {
   }
 
   ngOnInit(): void {
     this.individualService.getIndividuals()
       .then(individuals => this.individuals = individuals);
-  }
-
-  gotoDetail(individual: Individual): void {
-    let link = ['/detail', individual.id];
-    this.router.navigate(link);
+      this.organisationService.getOrganisations()
+        .then(organisations => this.organisations = organisations);
   }
 }
 

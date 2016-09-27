@@ -34,7 +34,7 @@ export class IndividualsComponent implements OnInit {
   }
 
   createNew(): void {
-    this.router.navigate(['/new']);
+    this.router.navigate(['/individuals/new']);
   }
 
   reset(): void {
@@ -59,7 +59,7 @@ export class IndividualsComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedIndividual.id]);
+    this.router.navigate(['/individuals', this.selectedIndividual.id]);
   }
 }
 

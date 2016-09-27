@@ -8,6 +8,9 @@ import { DashboardComponent }   from './dashboard.component';
 import { IndividualsComponent }      from './individuals.component';
 import { IndividualDetailComponent }  from './individual-detail.component';
 import { IndividualService }          from './individual.service';
+import { OrganisationsComponent }      from './organisations.component';
+import { OrganisationDetailComponent }  from './organisation-detail.component';
+import { OrganisationService }          from './organisation.service';
 // import { IndividualSearchComponent }  from './individual-search.component';
 import { routing }              from './app.routing';
 import { FileUploadModule } from 'ng2-file-upload/';
@@ -24,11 +27,14 @@ import { FileUploadModule } from 'ng2-file-upload/';
     AppComponent,
     DashboardComponent,
     IndividualDetailComponent,
-    IndividualsComponent
+    IndividualsComponent,
+    OrganisationDetailComponent,
+    OrganisationsComponent
     //IndividualSearchComponent
   ],
   providers: [
-    IndividualService
+    IndividualService,
+    OrganisationService
   ],
   bootstrap:    [ AppComponent ]
 })
