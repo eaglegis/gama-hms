@@ -4,6 +4,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Individual }        from './individual';
 import { IndividualService } from './individual.service';
 
+import { Organisation }                from './organisation';
+import { OrganisationService }         from './organisation.service';
+
 import { FileUploader, FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 const imageUploadUrl = 'api/FileAttachment';
@@ -15,6 +18,7 @@ const imageUploadUrl = 'api/FileAttachment';
 })
 export class IndividualDetailComponent implements OnInit {
   individual: Individual;
+  organisations: Organisation[];
 
   public uploader:FileUploader = new FileUploader({url: imageUploadUrl});
   public hasBaseDropZoneOver:boolean = false;
@@ -26,6 +30,7 @@ export class IndividualDetailComponent implements OnInit {
 
   constructor(
     private individualService: IndividualService,
+    private organisationService: OrganisationService,
     private route: ActivatedRoute) {
       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
           console.log("ImageUpload:uploaded:", item, response, status);
@@ -39,6 +44,9 @@ export class IndividualDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.organisationService
+      .getOrganisations()
+      .then(organisations => this.organisations = organisations);
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       if(id){

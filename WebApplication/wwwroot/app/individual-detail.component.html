@@ -22,6 +22,20 @@
                   </div>
       </div>
       <div class="form-group">
+        <label for="organisation">Organisation</label>
+        <select class="form-control" id="organisationId" required
+                [(ngModel)]="individual.organisationId" name="organisationId" 
+                #organisationId="ngModel" >
+            <option *ngFor="let organisation of organisations" [value]="organisation.id">
+                {{organisation.name}}
+            </option>
+        </select>
+        <div [hidden]="organisationId.valid || organisationId.pristine"
+            class="alert alert-danger">
+            Organisation is required
+        </div>
+      </div>
+      <div class="form-group">
         <label for="weightKgs">Weight (kgs)</label>
         <input type="number" class="form-control" id="weightKgs" required
                       [(ngModel)]="individual.weightKgs" name="weightKgs"
