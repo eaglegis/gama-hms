@@ -30,6 +30,12 @@ namespace WebApplication.Controllers
         public IEnumerable<Individual> Index()
         {
             _logger.LogDebug(LoggingEvents.LIST_ITEMS, "Individual Index");
+
+            foreach (Individual individual in _context.Individuals)
+            {
+                individual.Organisation = _context.Organisations.Single(O => O.Id == individual.OrganisationId);
+            }
+
             return _context.Individuals.ToList();
         }
 

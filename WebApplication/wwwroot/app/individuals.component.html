@@ -18,6 +18,9 @@
 								Last Name
 							</th>
 							<th>
+								Organisation
+							</th>
+							<th>
 								Photo
 							</th>
 							<th>
@@ -36,6 +39,9 @@
 							</td>
 							<td>
 								{{individual.lastName}}
+							</td>
+							<td>
+								{{individual.organisation.name}}
 							</td>
 							<td>
 								<img *ngIf="individual.profileImageId>0" src="api/fileAttachment/{{individual.profileImageId}}" width="100"/>
