@@ -46,6 +46,8 @@ namespace WebApplication.Controllers
                 return new NotFoundResult();
             }
 
+            individual.Organisation = _context.Organisations.Single(O => O.Id == individual.OrganisationId);
+
             return Json(individual);
         }
 

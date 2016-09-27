@@ -18,6 +18,7 @@ namespace WebApplication.Models
       public string Clan { get; set; }
       public string Village { get; set; }
 
+      public int OrganisationId { get; set; }
       public Organisation Organisation { get; set; }
   }
 
