@@ -26,7 +26,7 @@
 								{{organisation.name}}
 							</td>
 							<td>
-								<button type="button" class="btn btn-default" aria-label="Edit"
+								<button type="button" class="btn btn-primary" aria-label="Edit"
 						      (click)="edit(organisation); $event.stopPropagation()"><span class = "glyphicon glyphicon-edit" aria-hidden="true"></span></button>
 								<button type="button" class="btn btn-danger" aria-label="Delete"
 						      (click)="delete(organisation); $event.stopPropagation()"><span class = "glyphicon glyphicon-trash" aria-hidden="true"></span></button>
@@ -34,7 +34,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" *ngIf="editedOrganisation==null" class="btn btn-default" aria-label="Add New Record"
+				<button type="button" *ngIf="editedOrganisation==null" class="btn btn-primary" aria-label="Add New Record"
 					(click)="createNew(); $event.stopPropagation()"><span class = "glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 			</div>
 		</div>
