@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 
 import { Individual }        from './individual';
-import { IndividualService } from './individual.service';
 import { Organisation }        from './organisation';
 import { GenericService } from './generic.service';
 
@@ -17,14 +16,14 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private individualService: IndividualService,
+    private individualService: GenericService<Individual>,
     private organisationService: GenericService<Organisation>) {
   }
 
   ngOnInit(): void {
-    this.individualService.getIndividuals()
+    this.individualService.getAll(Individual.url)
       .then(individuals => this.individuals = individuals);
-      this.organisationService.getAll()
+      this.organisationService.getAll(Organisation.url)
         .then(organisations => this.organisations = organisations);
   }
 }

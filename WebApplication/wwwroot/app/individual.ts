@@ -12,7 +12,5 @@ export class Individual extends ModelBase{
     clan: string;
     village: string;
 
-    url():string{ return "individual"};
-    public static url2():string{ return "individual"};
-    public  static url3: string = "individual";
+    static url: string = "api/individual";
 }

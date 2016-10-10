@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Individual }        from './individual';
-import { IndividualService } from './individual.service';
 
 import { Organisation }                from './organisation';
 import { GenericService }         from './generic.service';
@@ -29,7 +28,7 @@ export class IndividualDetailComponent implements OnInit {
 
 
   constructor(
-    private individualService: IndividualService,
+    private individualService: GenericService<Individual>,
     private organisationService: GenericService<Organisation>,
     private route: ActivatedRoute) {
       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
@@ -45,12 +44,12 @@ export class IndividualDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.organisationService
-      .getAll()
+      .getAll(Organisation.url)
       .then(organisations => this.organisations = organisations);
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       if(id){
-        this.individualService.getIndividual(id)
+        this.individualService.get(Individual.url, id)
           .then(individual => this.individual = individual);
       } else
       {
@@ -65,10 +64,10 @@ export class IndividualDetailComponent implements OnInit {
     if (!this.individual.firstName || !this.individual.lastName) { return; }
 
     if(this.individual.id === undefined){
-      this.individualService.create(this.individual)
+      this.individualService.create(Individual.url, this.individual)
         .then(this.goBack);
     } else {
-      this.individualService.update(this.individual)
+      this.individualService.update(Individual.url, this.individual)
         .then(this.goBack);
     }
   }

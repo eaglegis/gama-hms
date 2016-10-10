@@ -7,7 +7,6 @@ import { AppComponent }  from './app.component';
 import { DashboardComponent }   from './dashboard.component';
 import { IndividualsComponent }      from './individuals.component';
 import { IndividualDetailComponent }  from './individual-detail.component';
-import { IndividualService }          from './individual.service';
 import { OrganisationsComponent }      from './organisations.component';
 import { OrganisationDetailComponent }  from './organisation-detail.component';
 import { GenericService }          from './generic.service';
@@ -33,7 +32,6 @@ import { FileUploadModule } from 'ng2-file-upload/';
     //IndividualSearchComponent
   ],
   providers: [
-    IndividualService,
     GenericService
   ],
   bootstrap:    [ AppComponent ]

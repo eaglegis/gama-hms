@@ -3,7 +3,7 @@ import { Router }            from '@angular/router';
 
 
 import { Organisation }                from './organisation';
-import { OrganisationService }         from './organisation.service';
+import { GenericService }         from './generic.service';
 
 @Component({
   selector: 'my-organisations',
@@ -17,13 +17,13 @@ export class OrganisationsComponent implements OnInit {
   selectedOrganisation: Organisation = null;
 
   constructor(
-    private organisationService: OrganisationService,
+    private organisationService: GenericService<Organisation>,
     private router: Router) {
      }
 
   getOrganisations(): void {
     this.organisationService
-        .getOrganisations()
+        .getAll(Organisation.url)
         .then(organisations => this.organisations = organisations);
   }
 
@@ -43,7 +43,7 @@ export class OrganisationsComponent implements OnInit {
 
   delete(organisation: Organisation): void {
     this.organisationService
-        .delete(organisation.id)
+        .delete(Organisation.url, organisation.id)
         .then(() => {
           this.organisations = this.organisations.filter(i => i !== organisation);
           if (this.selectedOrganisation === organisation) { this.selectedOrganisation = null; }

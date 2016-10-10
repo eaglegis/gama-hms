@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Organisation }        from './organisation';
-import { OrganisationService } from './organisation.service';
+//import { OrganisationService } from './organisation.service';
+import { GenericService } from './generic.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class OrganisationDetailComponent implements OnInit {
   organisation: Organisation;
 
   constructor(
-    private organisationService: OrganisationService,
+    private organisationService: GenericService<Organisation>,
     private route: ActivatedRoute) {
   }
 
@@ -22,7 +23,7 @@ export class OrganisationDetailComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       if(id){
-        this.organisationService.getOrganisation(id)
+        this.organisationService.get(Organisation.url, id)
           .then(organisation => this.organisation = organisation);
       } else
       {
@@ -37,10 +38,10 @@ export class OrganisationDetailComponent implements OnInit {
     if (!this.organisation.name) { return; }
 
     if(this.organisation.id === undefined){
-      this.organisationService.create(this.organisation)
+      this.organisationService.create(Organisation.url, this.organisation)
         .then(this.goBack);
     } else {
-      this.organisationService.update(this.organisation)
+      this.organisationService.update(Organisation.url, this.organisation)
         .then(this.goBack);
     }
   }

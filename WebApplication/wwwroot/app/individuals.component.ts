@@ -3,7 +3,7 @@ import { Router }            from '@angular/router';
 
 
 import { Individual }                from './individual';
-import { IndividualService }         from './individual.service';
+import { GenericService }         from './generic.service';
 
 @Component({
   selector: 'my-individuals',
@@ -17,13 +17,13 @@ export class IndividualsComponent implements OnInit {
   selectedIndividual: Individual = null;
 
   constructor(
-    private individualService: IndividualService,
+    private individualService: GenericService<Individual>,
     private router: Router) {
      }
 
   getIndividuals(): void {
     this.individualService
-        .getIndividuals()
+        .getAll(Individual.url)
         .then(individuals => this.individuals = individuals);
   }
 
@@ -43,7 +43,7 @@ export class IndividualsComponent implements OnInit {
 
   delete(individual: Individual): void {
     this.individualService
-        .delete(individual.id)
+        .delete(Individual.url, individual.id)
         .then(() => {
           this.individuals = this.individuals.filter(i => i !== individual);
           if (this.selectedIndividual === individual) { this.selectedIndividual = null; }
