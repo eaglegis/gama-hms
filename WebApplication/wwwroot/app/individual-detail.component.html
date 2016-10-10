@@ -23,8 +23,9 @@
       </div>
       <div class="form-group">
         <label for="organisation">Organisation</label>
+        <db-lookup [datasource]="organisations" [value]="id" [display]="name"></db-lookup>
         <select class="form-control" id="organisationId" required
-                [(ngModel)]="individual.organisationId" name="organisationId" 
+                [(ngModel)]="individual.organisationId" name="organisationId"
                 #organisationId="ngModel" >
             <option *ngFor="let organisation of organisations" [value]="organisation.id">
                 {{organisation.name}}

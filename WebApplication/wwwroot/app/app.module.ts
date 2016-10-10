@@ -14,12 +14,14 @@ import { OrganisationService }          from './organisation.service';
 // import { IndividualSearchComponent }  from './individual-search.component';
 import { routing }              from './app.routing';
 import { FileUploadModule } from 'ng2-file-upload/';
+import { WidgetModule } from './widgets/widgets.module'
 
 @NgModule({
   imports:      [
     BrowserModule,
     FormsModule,
     HttpModule,
+    WidgetModule,
     routing,
     FileUploadModule
   ],
