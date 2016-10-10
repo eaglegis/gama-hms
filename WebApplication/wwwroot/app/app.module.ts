@@ -10,7 +10,7 @@ import { IndividualDetailComponent }  from './individual-detail.component';
 import { IndividualService }          from './individual.service';
 import { OrganisationsComponent }      from './organisations.component';
 import { OrganisationDetailComponent }  from './organisation-detail.component';
-import { OrganisationService }          from './organisation.service';
+import { GenericService }          from './generic.service';
 // import { IndividualSearchComponent }  from './individual-search.component';
 import { routing }              from './app.routing';
 import { FileUploadModule } from 'ng2-file-upload/';
@@ -34,7 +34,7 @@ import { FileUploadModule } from 'ng2-file-upload/';
   ],
   providers: [
     IndividualService,
-    OrganisationService
+    GenericService
   ],
   bootstrap:    [ AppComponent ]
 })

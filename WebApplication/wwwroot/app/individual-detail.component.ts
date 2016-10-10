@@ -5,7 +5,7 @@ import { Individual }        from './individual';
 import { IndividualService } from './individual.service';
 
 import { Organisation }                from './organisation';
-import { OrganisationService }         from './organisation.service';
+import { GenericService }         from './generic.service';
 
 import { FileUploader, FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
@@ -30,7 +30,7 @@ export class IndividualDetailComponent implements OnInit {
 
   constructor(
     private individualService: IndividualService,
-    private organisationService: OrganisationService,
+    private organisationService: GenericService<Organisation>,
     private route: ActivatedRoute) {
       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
           console.log("ImageUpload:uploaded:", item, response, status);
@@ -45,7 +45,7 @@ export class IndividualDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.organisationService
-      .getOrganisations()
+      .getAll()
       .then(organisations => this.organisations = organisations);
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];

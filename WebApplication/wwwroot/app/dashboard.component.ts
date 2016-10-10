@@ -4,7 +4,7 @@ import { Router }            from '@angular/router';
 import { Individual }        from './individual';
 import { IndividualService } from './individual.service';
 import { Organisation }        from './organisation';
-import { OrganisationService } from './organisation.service';
+import { GenericService } from './generic.service';
 
 @Component({
   selector: 'my-dashboard',
@@ -18,13 +18,13 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router: Router,
     private individualService: IndividualService,
-    private organisationService: OrganisationService) {
+    private organisationService: GenericService<Organisation>) {
   }
 
   ngOnInit(): void {
     this.individualService.getIndividuals()
       .then(individuals => this.individuals = individuals);
-      this.organisationService.getOrganisations()
+      this.organisationService.getAll()
         .then(organisations => this.organisations = organisations);
   }
 }
