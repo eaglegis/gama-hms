@@ -1,7 +1,20 @@
-# Docker build
+# Get Amazon Container Service credentials
+aws ecr get-login --region ap-southeast-2
 
+# Docker build & push
 ````
-docker build -t hms
+cd WebApplication
+docker build -t hms .
+docker tag hms:latest 449310595484.dkr.ecr.ap-southeast-2.amazonaws.com/hms-repository:latest
+docker push 449310595484.dkr.ecr.ap-southeast-2.amazonaws.com/hms-repository:latest
+````
+
+# Docker Pull
+````
+aws ecr get-login --region ap-southeast-2
+docker tag hms:latest 449310595484.dkr.ecr.ap-southeast-2.amazonaws.com/hms-repository:latest
+docker push 449310595484.dkr.ecr.ap-southeast-2.amazonaws.com/hms-repository:latest
+
 ````
 
 # Docker run
