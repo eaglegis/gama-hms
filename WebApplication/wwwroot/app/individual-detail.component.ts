@@ -13,7 +13,7 @@ const imageUploadUrl = 'api/FileAttachment';
 @Component({
   selector: 'my-individual-detail',
   templateUrl: 'app/individual-detail.component.html',
-  styleUrls: ['app/individual-detail.component.css']
+  styleUrls: ['app/edit-detail.component.css']
 })
 export class IndividualDetailComponent implements OnInit {
   individual: Individual;

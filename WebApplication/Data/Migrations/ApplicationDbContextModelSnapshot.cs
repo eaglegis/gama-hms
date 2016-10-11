@@ -197,6 +197,18 @@ namespace WebApplication.Data.Migrations
                     b.ToTable("Appointments");
                 });
 
+            modelBuilder.Entity("WebApplication.Models.Crew", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Crew");
+                });
+
             modelBuilder.Entity("WebApplication.Models.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -232,13 +244,29 @@ namespace WebApplication.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Certified");
+
                     b.Property<string>("Clan");
 
+                    b.Property<int>("CrewId");
+
+                    b.Property<int>("DepartmentId");
+
+                    b.Property<int>("EmployeeId");
+
                     b.Property<string>("FirstName");
+
+                    b.Property<bool>("FitToWork");
 
                     b.Property<string>("LastName");
 
                     b.Property<int>("OrganisationId");
+
+                    b.Property<string>("PlaceOfHire");
+
+                    b.Property<string>("PositionTitle");
+
+                    b.Property<bool>("PreEmploy");
 
                     b.Property<int>("ProfileImageId");
 
@@ -248,9 +276,17 @@ namespace WebApplication.Data.Migrations
 
                     b.Property<decimal>("WeightKgs");
 
+                    b.Property<int>("WorkPlaceId");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("CrewId");
+
+                    b.HasIndex("DepartmentId");
+
                     b.HasIndex("OrganisationId");
+
+                    b.HasIndex("WorkPlaceId");
 
                     b.ToTable("Individuals");
                 });
@@ -279,6 +315,18 @@ namespace WebApplication.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Positions");
+                });
+
+            modelBuilder.Entity("WebApplication.Models.WorkPlace", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WorkPlace");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -335,9 +383,24 @@ namespace WebApplication.Data.Migrations
 
             modelBuilder.Entity("WebApplication.Models.Individual", b =>
                 {
+                    b.HasOne("WebApplication.Models.Crew", "Crew")
+                        .WithMany()
+                        .HasForeignKey("CrewId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("WebApplication.Models.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("WebApplication.Models.Organisation", "Organisation")
                         .WithMany()
                         .HasForeignKey("OrganisationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("WebApplication.Models.WorkPlace", "WorkPlace")
+                        .WithMany()
+                        .HasForeignKey("WorkPlaceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

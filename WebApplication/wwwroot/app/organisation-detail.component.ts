@@ -9,7 +9,7 @@ import { GenericService } from './generic.service';
 @Component({
   selector: 'my-organisation-detail',
   templateUrl: 'app/organisation-detail.component.html',
-  styleUrls: ['app/organisation-detail.component.css']
+  styleUrls: ['app/edit-detail.component.css']
 })
 export class OrganisationDetailComponent implements OnInit {
   organisation: Organisation;

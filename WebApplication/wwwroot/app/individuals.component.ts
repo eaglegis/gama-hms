@@ -8,7 +8,7 @@ import { GenericService }         from './generic.service';
 @Component({
   selector: 'my-individuals',
   templateUrl: 'app/individuals.component.html',
-  styleUrls:  ['app/individuals.component.css']
+  styleUrls:  ['app/edit-detail.component.css']
 })
 
 export class IndividualsComponent implements OnInit {

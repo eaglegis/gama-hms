@@ -9,10 +9,18 @@ namespace WebApplication.Models
   public class Individual
   {
       public int Id { get; set; }
+      public int EmployeeId { get; set; }
       public string FirstName { get; set; }
       public string LastName { get; set; }
       public decimal WeightKgs {get;set; }
       public int ProfileImageId {get;set; }
+
+      public string PlaceOfHire { get; set; }
+      public string PositionTitle { get; set; }
+
+      public bool FitToWork { get; set; }
+      public bool PreEmploy { get; set; }
+      public bool Certified { get; set; }
 
       public string Tribe { get; set; }
       public string Clan { get; set; }
@@ -20,6 +28,16 @@ namespace WebApplication.Models
 
       public int OrganisationId { get; set; }
       public Organisation Organisation { get; set; }
+
+      public int WorkPlaceId { get; set; }
+      public WorkPlace WorkPlace { get; set; }
+
+      public int DepartmentId { get; set; }
+      public Department Department { get; set; }
+
+      public int CrewId { get; set; }
+      public Crew Crew { get; set; }
+
   }
 
   public class Appointment
@@ -40,6 +58,18 @@ namespace WebApplication.Models
   }
 
   public class Department
+  {
+    public int Id { get; set; }
+    public string Name { get; set; }
+  }
+
+  public class WorkPlace
+  {
+    public int Id { get; set; }
+    public string Name { get; set; }
+  }
+
+  public class Crew
   {
     public int Id { get; set; }
     public string Name { get; set; }
