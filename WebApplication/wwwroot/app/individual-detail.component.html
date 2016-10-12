@@ -2,6 +2,16 @@
   <div class="col-md-12">
     <form role="form"  (ngSubmit)="save()" #heroForm="ngForm">
       <div class="form-group">
+        <label for="firstName">Employee ID</label>
+        <input type="text" class="form-control" id="employeeID" required
+                      [(ngModel)]="individual.employeId" name="employeeId"
+                      #employeeId="ngModel"/>
+                  <div [hidden]="employeeId.valid || employeeId.pristine"
+                      class="alert alert-danger">
+                      Employee ID is required
+                  </div>
+      </div>
+      <div class="form-group">
         <label for="firstName">First Name</label>
         <input type="text" class="form-control" id="firstName" required
                       [(ngModel)]="individual.firstName" name="firstName"
@@ -21,10 +31,11 @@
                       Last Name is required
                   </div>
       </div>
+
       <div class="form-group">
         <label for="organisation">Organisation</label>
         <select class="form-control" id="organisationId" required
-                [(ngModel)]="individual.organisationId" name="organisationId" 
+                [(ngModel)]="individual.organisationId" name="organisationId"
                 #organisationId="ngModel" >
             <option *ngFor="let organisation of organisations" [value]="organisation.id">
                 {{organisation.name}}
@@ -35,6 +46,30 @@
             Organisation is required
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="firstName">Place of Hire</label>
+        <input type="text" class="form-control" id="placeOfHire" required
+                      [(ngModel)]="individual.placeOfHire" name="placeOfHire"
+                      #placeOfHire="ngModel"/>
+                  <div [hidden]="placeOfHire.valid || placeOfHire.pristine"
+                      class="alert alert-danger">
+                      Place of Hire is required
+                  </div>
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">Position Title</label>
+        <input type="text" class="form-control" id="positionTitle" required
+                      [(ngModel)]="individual.positionTitle" name="positionTitle"
+                      #positionTitle="ngModel"/>
+                  <div [hidden]="positionTitle.valid || positionTitle.pristine"
+                      class="alert alert-danger">
+                      Position Title is required
+                  </div>
+      </div>
+
+
       <div class="form-group">
         <label for="weightKgs">Weight (kgs)</label>
         <input type="number" class="form-control" id="weightKgs" required
@@ -128,6 +163,7 @@
       </div>
 
 
+
       <div class="form-group">
         <label for="tribe">Tribe</label>
         <input type="text" class="form-control" id="tribe"
@@ -146,6 +182,55 @@
                       [(ngModel)]="individual.village" name="village"
                       #village="ngModel"/>
       </div>
+
+
+      <div class="form-group">
+        <label for="organisation">WorkPlace</label>
+        <select class="form-control" id="workPlaceId" required
+                [(ngModel)]="individual.workPlaceId" name="workPlaceId"
+                #workPlaceId="ngModel" >
+            <option *ngFor="let workPlace of workPlaces" [value]="workPlace.id">
+                {{workPlace.name}}
+            </option>
+        </select>
+        <div [hidden]="workPlaceId.valid || workPlaceId.pristine"
+            class="alert alert-danger">
+            Work Place is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="organisation">Department</label>
+        <select class="form-control" id="departmentId" required
+                [(ngModel)]="individual.departmentId" name="departmentId"
+                #departmentId="ngModel" >
+            <option *ngFor="let department of departments" [value]="department.id">
+                {{department.name}}
+            </option>
+        </select>
+        <div [hidden]="departmentId.valid || departmentId.pristine"
+            class="alert alert-danger">
+            Department is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="organisation">Crew</label>
+        <select class="form-control" id="crewId" required
+                [(ngModel)]="individual.crewId" name="crewId"
+                #crewId="ngModel" >
+            <option *ngFor="let crew of crews" [value]="crew.id">
+                {{crew.name}}
+            </option>
+        </select>
+        <div [hidden]="crewId.valid || crewId.pristine"
+            class="alert alert-danger">
+            Crew is required
+        </div>
+      </div>
+
+
+
 
       <button type="submit" class="btn btn-primary">
         <span [hidden]="!individual.id">Update</span>

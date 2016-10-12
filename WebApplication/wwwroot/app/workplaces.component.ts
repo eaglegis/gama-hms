@@ -34,7 +34,7 @@ export class WorkPlacesComponent implements OnInit {
   }
 
   createNew(): void {
-    this.router.navigate(['workPlaces/new']);
+    this.router.navigate(['workplaces/new']);
   }
 
   reset(): void {
@@ -59,7 +59,7 @@ export class WorkPlacesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/workPlaces', this.selectedWorkPlace.id]);
+    this.router.navigate(['/workplaces', this.selectedWorkPlace.id]);
   }
 }
 

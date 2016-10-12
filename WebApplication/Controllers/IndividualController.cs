@@ -34,6 +34,9 @@ namespace WebApplication.Controllers
             foreach (Individual individual in _context.Individuals)
             {
                 individual.Organisation = _context.Organisations.Single(O => O.Id == individual.OrganisationId);
+                individual.Crew = _context.Crews.Single(C => C.Id == individual.CrewId);
+                individual.Department = _context.Departments.Single(D => D.Id == individual.DepartmentId);
+                individual.WorkPlace = _context.WorkPlaces.Single(W => W.Id == individual.WorkPlaceId);
             }
 
             return _context.Individuals.ToList();
@@ -46,13 +49,16 @@ namespace WebApplication.Controllers
             _logger.LogDebug(LoggingEvents.GET_ITEM, "Individual Get ({0})", id);
 
             Individual individual = _context.Individuals.SingleOrDefault(I => I.Id == id);
-            
+
             if(individual == null){
                 _logger.LogError(LoggingEvents.GET_ITEM_NOTFOUND, "Individual not found ({0})", id);
                 return new NotFoundResult();
             }
 
             individual.Organisation = _context.Organisations.Single(O => O.Id == individual.OrganisationId);
+            individual.Crew = _context.Crews.Single(C => C.Id == individual.CrewId);
+            individual.Department = _context.Departments.Single(D => D.Id == individual.DepartmentId);
+            individual.WorkPlace = _context.WorkPlaces.Single(W => W.Id == individual.WorkPlaceId);
 
             return Json(individual);
         }

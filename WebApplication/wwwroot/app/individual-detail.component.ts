@@ -4,6 +4,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Individual }        from './individual';
 
 import { Organisation }                from './organisation';
+import { Crew }                from './crew';
+import { Department }                from './department';
+import { WorkPlace }                from './workplace';
 import { GenericService }         from './generic.service';
 
 import { FileUploader, FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
@@ -18,6 +21,9 @@ const imageUploadUrl = 'api/FileAttachment';
 export class IndividualDetailComponent implements OnInit {
   individual: Individual;
   organisations: Organisation[];
+  crews: Crew[];
+  departments: Department[];
+  workPlaces: WorkPlace[];
 
   public uploader:FileUploader = new FileUploader({url: imageUploadUrl});
   public hasBaseDropZoneOver:boolean = false;
@@ -30,6 +36,9 @@ export class IndividualDetailComponent implements OnInit {
   constructor(
     private individualService: GenericService<Individual>,
     private organisationService: GenericService<Organisation>,
+    private crewService: GenericService<Crew>,
+    private departmentService: GenericService<Department>,
+    private workPlaceService: GenericService<WorkPlace>,
     private route: ActivatedRoute) {
       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
           console.log("ImageUpload:uploaded:", item, response, status);
@@ -46,6 +55,15 @@ export class IndividualDetailComponent implements OnInit {
     this.organisationService
       .getAll(Organisation.url)
       .then(organisations => this.organisations = organisations);
+    this.crewService
+      .getAll(Crew.url)
+      .then(crews => this.crews = crews);
+    this.departmentService
+      .getAll(Department.url)
+      .then(departments => this.departments = departments);
+    this.workPlaceService
+      .getAll(WorkPlace.url)
+      .then(workPlaces => this.workPlaces = workPlaces);
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       if(id){
