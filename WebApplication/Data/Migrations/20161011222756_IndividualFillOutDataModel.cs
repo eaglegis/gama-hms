@@ -9,11 +9,25 @@ namespace WebApplication.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
 
+          migrationBuilder.AddColumn<string>(
+              name: "EmployeeId",
+              table: "Individuals",
+              nullable: true);
+
+          migrationBuilder.AddColumn<string>(
+              name: "PlaceOfHire",
+              table: "Individuals",
+              nullable: true);
+
+          migrationBuilder.AddColumn<string>(
+              name: "PositionTitle",
+              table: "Individuals",
+              nullable: true);
+
             migrationBuilder.AddColumn<int>(
                 name: "CrewId",
                 table: "Individuals",
                 nullable: true);
-
 
             migrationBuilder.AddColumn<int>(
                 name: "DepartmentId",
@@ -24,6 +38,22 @@ namespace WebApplication.Data.Migrations
                 name: "WorkPlaceId",
                 table: "Individuals",
                 nullable: true);
+
+            migrationBuilder.AddColumn<bool>(
+                name: "FitToWork",
+                table: "Individuals",
+                nullable: true);
+
+            migrationBuilder.AddColumn<bool>(
+                name: "PreEmploy",
+                table: "Individuals",
+                nullable: true);
+
+            migrationBuilder.AddColumn<bool>(
+                name: "Certified",
+                table: "Individuals",
+                nullable: true);
+
 
             migrationBuilder.CreateTable(
               name: "Crews",
@@ -73,9 +103,32 @@ namespace WebApplication.Data.Migrations
         {
 
           migrationBuilder.DropColumn(
-             name: "CrewId",
-             table: "Individuals");
+            name: "EmployeeId",
+            table: "Individuals");
 
+          migrationBuilder.DropColumn(
+            name: "PlaceOfHire",
+            table: "Individuals");
+
+          migrationBuilder.DropColumn(
+            name: "PositionTitle",
+            table: "Individuals");
+
+          migrationBuilder.DropColumn(
+            name: "FitToWork",
+            table: "Individuals");
+
+          migrationBuilder.DropColumn(
+            name: "PreEmploy",
+            table: "Individuals");
+
+          migrationBuilder.DropColumn(
+            name: "Certified",
+            table: "Individuals");
+
+          migrationBuilder.DropColumn(
+            name: "CrewId",
+            table: "Individuals");
 
           migrationBuilder.DropColumn(
              name: "DepartmentId",
