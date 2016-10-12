@@ -8,7 +8,24 @@ namespace WebApplication.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-          migrationBuilder.CreateTable(
+
+            migrationBuilder.AddColumn<int>(
+                name: "CrewId",
+                table: "Individuals",
+                nullable: true);
+
+
+            migrationBuilder.AddColumn<int>(
+                name: "DepartmentId",
+                table: "Individuals",
+                nullable: true);
+
+            migrationBuilder.AddColumn<int>(
+                name: "WorkPlaceId",
+                table: "Individuals",
+                nullable: true);
+
+            migrationBuilder.CreateTable(
               name: "Crews",
               columns: table => new
               {
@@ -54,6 +71,21 @@ namespace WebApplication.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+
+          migrationBuilder.DropColumn(
+             name: "CrewId",
+             table: "Individuals");
+
+
+          migrationBuilder.DropColumn(
+             name: "DepartmentId",
+             table: "Individuals");
+
+
+          migrationBuilder.DropColumn(
+             name: "WorkPlaceId",
+             table: "Individuals");
+
           migrationBuilder.DropTable(
               name: "Crews");
 
