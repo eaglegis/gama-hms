@@ -3,8 +3,8 @@
     <form role="form"  (ngSubmit)="save()" #heroForm="ngForm">
       <div class="form-group">
         <label for="firstName">Employee ID</label>
-        <input type="text" class="form-control" id="employeeID" required
-                      [(ngModel)]="individual.employeId" name="employeeId"
+        <input type="number" class="form-control" id="employeeID" required
+                      [(ngModel)]="individual.employeeId" name="employeeId"
                       #employeeId="ngModel"/>
                   <div [hidden]="employeeId.valid || employeeId.pristine"
                       class="alert alert-danger">

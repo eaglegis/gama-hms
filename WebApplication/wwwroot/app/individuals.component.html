@@ -9,7 +9,7 @@
 					<thead>
 						<tr>
 							<th>
-								#
+								ID
 							</th>
 							<th>
 								First Name
@@ -32,7 +32,7 @@
 					<tbody>
 						<tr *ngFor="let individual of individuals" (click)="gotoDetail(individual)">
 							<td>
-								<span class="badge">{{individual.id}}</span>
+								<span class="badge">{{individual.employeeId}}</span>
 							</td>
 							<td>
 								{{individual.firstName}}
