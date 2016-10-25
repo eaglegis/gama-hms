@@ -1,3 +1,28 @@
+# Get Amazon Container Service credentials
+aws ecr get-login --region ap-southeast-2
+
+# Docker build & push
+````
+cd WebApplication
+docker build -t hms .
+docker tag hms:latest 449310595484.dkr.ecr.ap-southeast-2.amazonaws.com/hms-repository:latest
+docker push 449310595484.dkr.ecr.ap-southeast-2.amazonaws.com/hms-repository:latest
+````
+
+# Docker Pull
+````
+aws ecr get-login --region ap-southeast-2
+docker tag hms:latest 449310595484.dkr.ecr.ap-southeast-2.amazonaws.com/hms-repository:latest
+docker push 449310595484.dkr.ecr.ap-southeast-2.amazonaws.com/hms-repository:latest
+
+````
+
+# Docker run
+
+````
+docker run -it -p 5000:5000 hms
+````
+
 # Welcome to ASP.NET Core
 
 We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.

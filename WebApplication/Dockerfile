@@ -1,11 +1,12 @@
-FROM microsoft/aspnet:1.0.0-rc1-update1
+FROM microsoft/dotnet:latest
 
-RUN printf "deb http://ftp.us.debian.org/debian jessie main\n" >> /etc/apt/sources.list
-RUN apt-get -qq update && apt-get install -qqy sqlite3 libsqlite3-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev && rm -rf /var/lib/apt/lists/*
 
 COPY . /app
 WORKDIR /app
-RUN ["dnu", "restore"]
+RUN ["dotnet", "restore"]
+RUN ["dotnet", "build"]
+RUN ["dotnet", "ef", "database", "update"]
 
 EXPOSE 5000/tcp
-ENTRYPOINT ["dnx", "-p", "project.json", "Microsoft.AspNet.Server.Kestrel", "--server.urls", "http://0.0.0.0:5000"]
+CMD ["dotnet", "run", "--server.urls", "http://*:5000"]

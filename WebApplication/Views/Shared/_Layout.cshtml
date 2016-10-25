@@ -3,15 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/">
     <title>@ViewData["Title"] - WebApplication</title>
 
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-theme.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
@@ -19,27 +20,29 @@
     <environment names="Development">
         <script src="~/lib/npmlibs/es6-shim/es6-shim.js"></script>
         <script src="~/lib/npmlibs/systemjs/system-polyfills.src.js"></script>
-        <script src="~/lib/npmlibs/angular2/angular2-polyfills.js"></script>
 
         <script src="~/lib/npmlibs/systemjs/system.src.js"></script>
+        <script src="~/lib/npmlibs/zone.js/zone.js"></script>
+        <script src="~/lib/npmlibs/reflect-metadata/Reflect.js"></script>
+
         <script src="~/lib/npmlibs/rxjs/Rx.js"></script>
-        <script src="~/lib/npmlibs/angular2/angular2.js"></script>
-        <script src="~/lib/npmlibs/angular2/router.js"></script>
+        <script src="~/lib/npmlibs/ng2-file-upload/ng2-file-upload.js"></script>
     </environment>
 
     <environment names="Staging,Production">
         <script src="~/lib/npmlibs/es6-shim/es6-shim.min.js"></script>
         <script src="~/lib/npmlibs/systemjs/system-polyfills.js"></script>
-        <script src="~/lib/npmlibs/angular2/angular2-polyfills.min.js"></script>
+
+        <script src="~/lib/npmlibs/zone.js/zone.min.js"></script>
+        <script src="~/lib/npmlibs/reflect-metadata/Reflect.js"></script>
 
         <script src="~/lib/npmlibs/systemjs/system.src.js"></script>
         <script src="~/lib/npmlibs/rxjs/Rx.min.js"></script>
-        <script src="~/lib/npmlibs/angular2/angular2.min.js"></script>
-        <script src="~/lib/npmlibs/angular2/router.min.js"></script>
+        <script src="~/lib/npmlibs/ng2-file-upload/ng2-file-upload.min.js"></script>
     </environment>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

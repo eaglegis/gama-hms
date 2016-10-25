@@ -1,0 +1,66 @@
+<h2>Individuals</h2>
+
+<div class="container-fluid">
+
+	<div class="grid grid-pad">
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								ID
+							</th>
+							<th>
+								First Name
+							</th>
+							<th>
+								Last Name
+							</th>
+							<th>
+								Organisation
+							</th>
+							<th>
+								Photo
+							</th>
+							<th>
+								Weight (kgs)
+							</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let individual of individuals" (click)="gotoDetail(individual)">
+							<td>
+								<span class="badge">{{individual.employeeId}}</span>
+							</td>
+							<td>
+								{{individual.firstName}}
+							</td>
+							<td>
+								{{individual.lastName}}
+							</td>
+							<td>
+								{{individual.organisation.name}}
+							</td>
+							<td>
+								<img *ngIf="individual.profileImageId>0" src="api/fileAttachment/{{individual.profileImageId}}" width="100"/>
+							</td>
+							<td>
+								{{individual.weightKgs}}
+							</td>
+							<td>
+								<button type="button" class="btn btn-primary" aria-label="Edit"
+						      (click)="edit(individual); $event.stopPropagation()"><span class = "glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+								<button type="button" class="btn btn-danger" aria-label="Delete"
+						      (click)="delete(individual); $event.stopPropagation()"><span class = "glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<button type="button" *ngIf="editedIndividual==null" class="btn btn-primary" aria-label="Add New Record"
+					(click)="createNew(); $event.stopPropagation()"><span class = "glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+			</div>
+		</div>
+	</div>
+</div>

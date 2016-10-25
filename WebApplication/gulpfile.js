@@ -5,7 +5,21 @@ var gulp = require("gulp"),
     rimraf = require("rimraf"),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
-    uglify = require("gulp-uglify");
+    uglify = require("gulp-uglify"),
+    browserSync = require('browser-sync').create();
+
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        proxy: "localhost:5000",
+        files: [
+          "Views/**/*.cshtml",
+          "wwwroot/app/*.js",
+          "wwwroot/app/*.html",
+          "wwwroot/css/style.css",
+          "wwwroot/js/*.js"
+        ]
+    });
+});
 
 var paths = {
     webroot: "./wwwroot/"
@@ -52,8 +66,8 @@ gulp.task("copy-deps:systemjs", function () {
 });
 
 gulp.task("copy-deps:angular2", function () {
-    return gulp.src(paths.npmSrc + '/angular2/bundles/**/*.js', { base: paths.npmSrc + '/angular2/bundles/' })
-         .pipe(gulp.dest(paths.npmLibs + '/angular2/'));
+    return gulp.src(paths.npmSrc + '/@angular/**/bundles/**/*.js', { base: paths.npmSrc + '/@angular/' })
+         .pipe(gulp.dest(paths.npmLibs + '/@angular/'));
 });
 
 gulp.task("copy-deps:es6-shim", function () {
@@ -61,9 +75,36 @@ gulp.task("copy-deps:es6-shim", function () {
          .pipe(gulp.dest(paths.npmLibs + '/es6-shim/'));
 });
 
-gulp.task("copy-deps:rxjs", function () {
+gulp.task("copy-deps:rxjs-bundles", function () {
     return gulp.src(paths.npmSrc + '/rxjs/bundles/*.*', { base: paths.npmSrc + '/rxjs/bundles/' })
          .pipe(gulp.dest(paths.npmLibs + '/rxjs/'));
 });
 
-gulp.task("copy-deps", ["copy-deps:rxjs", 'copy-deps:angular2', 'copy-deps:systemjs', 'copy-deps:es6-shim']);
+gulp.task("copy-deps:rxjs", function () {
+    return gulp.src(paths.npmSrc + '/rxjs/**/*.*', { base: paths.npmSrc + '/rxjs/' })
+         .pipe(gulp.dest(paths.npmLibs + '/rxjs/'));
+});
+
+gulp.task("copy-deps:zone.js", function () {
+    return gulp.src(paths.npmSrc + '/zone.js/dist/*.*', { base: paths.npmSrc + '/zone.js/dist/' })
+         .pipe(gulp.dest(paths.npmLibs + '/zone.js/'));
+});
+
+gulp.task("copy-deps:reflect-metadata", function () {
+    return gulp.src(paths.npmSrc + '/reflect-metadata/*.*', { base: paths.npmSrc + '/reflect-metadata/' })
+         .pipe(gulp.dest(paths.npmLibs + '/reflect-metadata/'));
+});
+
+gulp.task("copy-deps:ng2-file-upload", function () {
+    return gulp.src(paths.npmSrc + '/ng2-file-upload/*.*', { base: paths.npmSrc + '/ng2-file-upload/' })
+         .pipe(gulp.dest(paths.npmLibs + '/ng2-file-upload/'));
+});
+
+/*
+gulp.task("copy-deps:ng2-bootstrap", function () {
+    return gulp.src(paths.npmSrc + '/ng2-bootstrap/*.*', { base: paths.npmSrc + '/ng2-bootstrap/' })
+         .pipe(gulp.dest(paths.npmLibs + '/ng2-bootstrap/'));
+});
+*/
+
+gulp.task("copy-deps", ["copy-deps:rxjs", "copy-deps:rxjs-bundles", 'copy-deps:angular2', 'copy-deps:systemjs', 'copy-deps:es6-shim', 'copy-deps:zone.js', 'copy-deps:reflect-metadata', 'copy-deps:ng2-file-upload' /*, 'copy-deps:ng2-bootstrap'*/ ]);
