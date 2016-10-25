@@ -1,4 +1,4 @@
-# aspnetcoreangular2
+#gama-hms 
 
 ### Prerequisites
 - node v0.12.9 +
@@ -27,8 +27,8 @@ Dummy change
 Running through http://blog.nbellocam.me/2016/03/14/asp-net-core-and-angular-2/ on MacOSX
 
 ````
-% git clone git@github.com:leighghunt/aspnetcoreangular2.git
-% cd aspnetcoreangular2/WebApplication
+% git clone git@github.com:eaglegis/gama-hms.git
+% cd gama-hms/src
 % dotnet restore
 % npm install
 % dotnet build
