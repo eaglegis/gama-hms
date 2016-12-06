@@ -2,23 +2,23 @@
   "_args": [
     [
       "ng2-file-upload@^1.1.0",
-      "/Users/lhunt/dev/playground/aspnetcoreangular2/WebApplication"
+      "/Users/lhunt/dev/gama-hms/src"
     ]
   ],
   "_from": "ng2-file-upload@>=1.1.0 <2.0.0",
-  "_id": "ng2-file-upload@1.1.0",
+  "_id": "ng2-file-upload@1.1.2",
   "_inCache": true,
   "_location": "/ng2-file-upload",
-  "_nodeVersion": "6.2.1",
+  "_nodeVersion": "6.7.0",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/ng2-file-upload-1.1.0.tgz_1474488698358_0.9300486843567342"
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/ng2-file-upload-1.1.2.tgz_1476716285456_0.7383359421510249"
   },
   "_npmUser": {
     "email": "valorkin@gmail.com",
     "name": "valorkin"
   },
-  "_npmVersion": "3.9.3",
+  "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
     "name": "ng2-file-upload",
@@ -31,11 +31,11 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/ng2-file-upload/-/ng2-file-upload-1.1.0.tgz",
-  "_shasum": "44d266d89fde1e6106c2d00926bcd17c4580499f",
+  "_resolved": "https://registry.npmjs.org/ng2-file-upload/-/ng2-file-upload-1.1.2.tgz",
+  "_shasum": "63467dcc2a92cf4af1d141bad2b78dbed9564723",
   "_shrinkwrap": null,
   "_spec": "ng2-file-upload@^1.1.0",
-  "_where": "/Users/lhunt/dev/playground/aspnetcoreangular2/WebApplication",
+  "_where": "/Users/lhunt/dev/gama-hms/src",
   "author": {
     "email": "vyacheslav.chub@valor-software.com",
     "name": "Vyacheslav Chub"
@@ -68,12 +68,12 @@
   "dependencies": {},
   "description": "angular2 file upload directives",
   "devDependencies": {
-    "@angular/common": "2.0.0",
-    "@angular/compiler": "2.0.0",
-    "@angular/core": "2.0.0",
-    "@angular/forms": "2.0.0",
-    "@angular/platform-browser": "2.0.0",
-    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/common": "~2.0.1",
+    "@angular/compiler": "~2.0.1",
+    "@angular/core": "~2.0.1",
+    "@angular/forms": "~2.0.1",
+    "@angular/platform-browser": "~2.0.1",
+    "@angular/platform-browser-dynamic": "~2.0.1",
     "@types/jasmine": "2.2.34",
     "@types/node": "6.0.39",
     "@types/webpack": "1.12.34",
@@ -110,10 +110,10 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "44d266d89fde1e6106c2d00926bcd17c4580499f",
-    "tarball": "https://registry.npmjs.org/ng2-file-upload/-/ng2-file-upload-1.1.0.tgz"
+    "shasum": "63467dcc2a92cf4af1d141bad2b78dbed9564723",
+    "tarball": "https://registry.npmjs.org/ng2-file-upload/-/ng2-file-upload-1.1.2.tgz"
   },
-  "gitHead": "9d2da3809d172a894edc019795425c93190318db",
+  "gitHead": "5af17612cbbd490e41ea4c720b800d21338ca091",
   "homepage": "https://github.com/valor-software/ng2-file-upload#readme",
   "installable": true,
   "keywords": [
@@ -135,10 +135,10 @@
   "name": "ng2-file-upload",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular/common": "2.0.0",
-    "@angular/compiler": "2.0.0",
-    "@angular/core": "2.0.0",
-    "@angular/forms": "2.0.0"
+    "@angular/common": "^2.0.0",
+    "@angular/compiler": "^2.0.0",
+    "@angular/core": "^2.0.0",
+    "@angular/forms": "^2.0.0"
   },
   "repository": {
     "type": "git",
@@ -171,5 +171,5 @@
     "version": "npm run flow.changelog && git add -A"
   },
   "typings": "ng2-file-upload.d.ts",
-  "version": "1.1.0"
+  "version": "1.1.2"
 }
