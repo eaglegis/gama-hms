@@ -10,7 +10,7 @@
         "spec": ">=1.1.0 <2.0.0",
         "type": "range"
       },
-      "/Users/lhunt/dev/gama-hms/src"
+      "C:\\Users\\gjl\\Documents\\gama-hms\\src"
     ]
   ],
   "_from": "ng2-file-upload@>=1.1.0 <2.0.0",
@@ -44,7 +44,7 @@
   "_shasum": "63467dcc2a92cf4af1d141bad2b78dbed9564723",
   "_shrinkwrap": null,
   "_spec": "ng2-file-upload@^1.1.0",
-  "_where": "/Users/lhunt/dev/gama-hms/src",
+  "_where": "C:\\Users\\gjl\\Documents\\gama-hms\\src",
   "author": {
     "name": "Vyacheslav Chub",
     "email": "vyacheslav.chub@valor-software.com"
