@@ -1,7 +1,15 @@
 {
   "_args": [
     [
-      "ng2-file-upload@^1.1.0",
+      {
+        "raw": "ng2-file-upload@^1.1.0",
+        "scope": null,
+        "escapedName": "ng2-file-upload",
+        "name": "ng2-file-upload",
+        "rawSpec": "^1.1.0",
+        "spec": ">=1.1.0 <2.0.0",
+        "type": "range"
+      },
       "/Users/lhunt/dev/gama-hms/src"
     ]
   ],
@@ -15,16 +23,17 @@
     "tmp": "tmp/ng2-file-upload-1.1.2.tgz_1476716285456_0.7383359421510249"
   },
   "_npmUser": {
-    "email": "valorkin@gmail.com",
-    "name": "valorkin"
+    "name": "valorkin",
+    "email": "valorkin@gmail.com"
   },
   "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
-    "name": "ng2-file-upload",
     "raw": "ng2-file-upload@^1.1.0",
-    "rawSpec": "^1.1.0",
     "scope": null,
+    "escapedName": "ng2-file-upload",
+    "name": "ng2-file-upload",
+    "rawSpec": "^1.1.0",
     "spec": ">=1.1.0 <2.0.0",
     "type": "range"
   },
@@ -37,8 +46,8 @@
   "_spec": "ng2-file-upload@^1.1.0",
   "_where": "/Users/lhunt/dev/gama-hms/src",
   "author": {
-    "email": "vyacheslav.chub@valor-software.com",
-    "name": "Vyacheslav Chub"
+    "name": "Vyacheslav Chub",
+    "email": "vyacheslav.chub@valor-software.com"
   },
   "bugs": {
     "url": "https://github.com/valor-software/ng2-file-upload/issues"
@@ -115,14 +124,13 @@
   },
   "gitHead": "5af17612cbbd490e41ea4c720b800d21338ca091",
   "homepage": "https://github.com/valor-software/ng2-file-upload#readme",
-  "installable": true,
   "keywords": [
-    "angular-file-upload",
     "angular2",
-    "angularjs",
     "bootstrap",
+    "angularjs",
+    "twitter-bootstrap",
     "file-upload",
-    "twitter-bootstrap"
+    "angular-file-upload"
   ],
   "license": "MIT",
   "main": "ng2-file-upload.js",
@@ -140,6 +148,7 @@
     "@angular/core": "^2.0.0",
     "@angular/forms": "^2.0.0"
   },
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/valor-software/ng2-file-upload.git"
