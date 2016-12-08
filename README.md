@@ -67,7 +67,10 @@ dotnet restore
 npm install
 dotnet build
 dotnet ef database update
-gulp copy-deps
 tsc
+gulp copy-deps
 dotnet run
+dotnet publish
 ````
+
+- Copy contents of ```src/bin/Debug/netcoreapp1.0/publish/``` into ```c:/inetpub/hms/```.
