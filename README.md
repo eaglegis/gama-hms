@@ -44,20 +44,14 @@ Running on IIS on Windows
 References:
 
 - https://docs.asp.net/en/latest/publishing/iis.html
-- https://www.iis.net/learn/extensions/url-rewrite-module/reverse-proxy-with-url-rewrite-v2-and-application-request-routing
 
-- Download [.NET Core Windows Server Hosting](https://go.microsoft.com/fwlink/?LinkID=827547)
-- Download [NodeJS](https://nodejs.org/en/download/)
 - Prerequisites:
-  - URL Rewrite Module
-  - [Application Request Routing (ARR)](https://www.iis.net/downloads/microsoft/application-request-routing)
-- Add the following rewrite rules to IIS's root ```web.config```.
-```
-<rule name="Reverse Proxy to gama-hms" stopProcessing="true">
-    <match url="^hms/(.*)" />
-    <action type="Rewrite" url="http://localhost:5001/{R:1}" />
-</rule>
-```
+  - [.NET Core Windows Server Hosting](https://go.microsoft.com/fwlink/?LinkID=827547)
+  - [NodeJS](https://nodejs.org/en/download/)
+
+- Steps to take to configure to use IIS, rather than dotnet/kestrel:
+- Update ```appsettings.json``` to point to correct DB path:
+  - ```"DefaultConnection": "Data Source=App_Data\\WebApplication.db"```
 
 ````
 npm install -g gulp typescript
@@ -74,3 +68,8 @@ dotnet publish
 ````
 
 - Copy contents of ```src/bin/Debug/netcoreapp1.0/publish/``` into ```c:/inetpub/hms/```.
+- Create ```App_Data``` folder and copy ```WebApplication.db``` file into it.
+- Add **Modify** permissions to ```IIS APPPOOL\api``` user (ensure local machine is selected when checking name) to ```App_Data``` folder.
+
+- Development Mode
+  - If needed, you can set the ```ASPNETCORE_ENVIRONMENT``` environment variable to ```Development``` as detailed in [this article](http://stackoverflow.com/questions/31049152/publish-to-iis-setting-environment-variable/36836533#36836533). **N.B.** you will need to create a ```project.json``` file in the application directory.
